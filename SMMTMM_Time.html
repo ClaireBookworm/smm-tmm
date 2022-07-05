@@ -145,7 +145,7 @@ body {
     When you start a trial:
     <p>(1) You will see one object image on the screen at a time, each will be appear for 3 seconds.  </p> 
     <p>(2) Your job is to REMEMBER what objects you saw as well as when you saw them.  </p> 
-    <p>(3) Some items will appear twice. If you saw the item before, click the when you saw them on the time bar (guess if you need to). </p>
+    <p>(3) Some items will appear twice. If you saw the item before, indicate on a time bar the time when you saw them.  </p>
     <p>(4) Please respond as quickly and accurately as possible. We will record your responses and reaction time. </p> 
 
     <p>The experiment consists of around ~350 trials. You should be able to complete them in 30 minutes. You are alloted 60 min in total. 
@@ -254,14 +254,15 @@ body {
                 <p> 
                     <br><br>
                     <p style = "color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you saw 
-                    and <b>time</b> when you saw them <br></p>
+                    and the <b>time</b> when you saw them <br></p>
                     <br>
                     Item will appear on the screen for 3 seconds each at different locations.
                     <br><br>
 
 
                     Some items will show up twice. <br><br>
-                    <b>If you saw the item before,</b><br><br> respond on the time bar when in the experiment did you last see it.
+                    <b>If you saw the item before,</b><br><br>
+                    respond on the time bar when in the experiment did you last see it.
                     <br><br>
                     <b>If you have not seen it before,</b> <br><br>click in the purple box to the right. 
                     <br><br><br><br>
@@ -385,7 +386,7 @@ body {
 
         <div class = "DisplayWindow" id = "DisplayWindow">    
             <div id = "DisplayWindow_img"></div>
-            <div id = "DisplayWindow_instr"> Click On TIme Bar <br> or Click in New Box</div>
+            <div id = "DisplayWindow_instr"> Click Old Location <br> or Click in New Box</div>
         </div>
     </body>
 </div>
@@ -438,7 +439,7 @@ body {
     var IncludeBackGroundBoxes = 1; // 1 = box visible, 0 = box unvisible 
     var imageSizeParam = 0.9;// default = 0.9;
     var practiceOn = 0; // 1= include practice, 0 = go straight into experiment. 
-    var viewingBlock_instr = "Try to remember the identity and time of each item"
+    var viewingBlock_instr = "Try to remember the identity and timeline of each item"
 
     // STIMULUS VARIABLES 
     var ImgList_all = []; 
@@ -842,7 +843,7 @@ body {
         ctx.clearRect(0, 0,CanvasHeight,CanvasWidth); 
         ctx.font = "1rem Arial"
         ctx.fillText("Don't forget to mark when you saw this item on the timeline at the top! ", CanvasHeight/18,CanvasWidth/3)
-        // ctx.fillText("", CanvasHeight/18,CanvasWidth/2.5)
+        ctx.fillText("", CanvasHeight/18,CanvasWidth/2.5)
         
     }
 
@@ -905,8 +906,8 @@ body {
         ClickSummary()
 
         setTimeout( function(){
-            // ctx.clearRect(0, 0,CanvasHeight,CanvasWidth); 
-            // redrawBoxes()
+            ctx.clearRect(0, 0,CanvasHeight,CanvasWidth); 
+            redrawBoxes()
         },500)
 
         setTimeout( function(){
@@ -919,14 +920,14 @@ body {
         //clearThisImage(GetThisImageLoc)
         //clearTimeout(timer1);
         save_response = 'SaidOld';
-        // imgClick = 1; 
+        imgClick = 1; 
         
-        // getCursorPosition(canvas, e)
-        // canvas.remove EventListener('click', Click_canvas) // disable click on screen 
-        // respbutton.removeEventListener('click', Click_newLoc) // disable click on screen 
-        // save_RT =  (new Date()).getTime() - ImageOnTime; //XXXX
+        getCursorPosition(canvas, e)
+        canvas.removeEventListener('click', Click_canvas) // disable click on screen 
+        respbutton.removeEventListener('click', Click_newLoc) // disable click on screen 
+        save_RT =  (new Date()).getTime() - ImageOnTime; //XXXX
     
-        // playSound_neu2();
+        playSound_neu2();
        /*
         if (isOld_item == 1){ //clicked when the item was old --> old/new correct 
 
