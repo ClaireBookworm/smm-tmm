@@ -1,6 +1,7 @@
 
 <!--
     Changed from SMM_TMM 
+    SMMTMM_Full_Instructions.html
 
     Show n object, then show 2 n object, ask old new location, time
     Four conditions, 1 - tell both 2 - tell spatial  3 - tell temporal 4 - tell nothing
@@ -14,18 +15,46 @@
 
 <!--Load Library-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://timbrady.org/turk/TimTurkTools.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
+<?php include 'save_data.php';?>
 
 <style>
 
 body {
     min-height: 100vh;
-    font-family: "Gill Sans", sans-serif;
+    font-family: "Gill Sans", "Helvetica Neue", sans-serif;
     font-size: 1.2rem;
     display: inline
+}
+
+.StartButton {
+    background-color: rgba(235, 235, 235, 0.5);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font-size: 14px; */
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 5px;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+
+.StartButton:hover {
+    background-color: rgba(235, 235, 235, 1);
+}
+.StartButton > a:hover {
+    color: #8EDE0B;
 }
 
 .headboard {
@@ -38,6 +67,8 @@ body {
     width: 25vw;
     height:95vh;
     float:right;
+    margin: 1rem 1rem auto auto;
+    border-radius: 10px;
 }
 .StimWindow {
     float:right;
@@ -65,6 +96,34 @@ body {
 #ResponseButton_instr {
     float:left;
     margin-top: 90%;
+}
+
+#ResponseButton_instr > button {
+
+  background-color: rgba(235, 235, 235, 0.8);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 5px;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#ResponseButton_instr > button:hover {
+    background-color: rgba(185, 185, 185, 0.8);
 }
 
 #Break, #Break_retest {
@@ -141,11 +200,11 @@ body {
     <p> Please complete this study on a desktop or laptop. </p>
 
     <h4>Instructions:</h4>
-    <p><b>NOTE:</b>The experiment works in Safari and Chrome. If the experiment does not show in your browser, please notify the experimenter.</p> 
+    <p><b>NOTE: </b>The experiment works in Safari and Chrome. If the experiment does not show in your browser, please notify the experimenter.</p> 
     When you start a trial:
     <p>(1) You will see one object image on the screen at a time, each will be appear for 3 seconds.  </p> 
-    <p>(2) Your job is to REMEMBER what objects you saw as well as when you saw them.  </p> 
-    <p>(3) Some items will appear twice. If you saw the item before, indicate on a time bar the time when you saw them.  </p>
+    <p>(2) Your job is to REMEMBER what objects you saw as well as when and where saw them.  </p> 
+    <p>(3) Some items will appear twice. If you saw the item before, click the location where you thought you saw them (guess if you need to). Then, indicate on a time bar the time when you saw them.  </p>
     <p>(4) Please respond as quickly and accurately as possible. We will record your responses and reaction time. </p> 
 
     <p>The experiment consists of around ~350 trials. You should be able to complete them in 30 minutes. You are alloted 60 min in total. 
@@ -243,35 +302,26 @@ body {
 
 <div class = "TestScreen" id = "TestScreen">
     <body>
-
         <div class = "ResponseButton" id = "ResponseButton"> 
             <div id = "ResponseButton_instr"></div>
         </div>
-
         <div class = "StimWindow" id = "StimWindow" >    
-
             <div class = "Instruction">
                 <p> 
-                    <br><br>
+                    <!-- <br><br> -->
                     <p style = "color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you saw 
-                    and the <b>time</b> when you saw them <br></p>
+                    and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them <br></p>
                     <br>
-                    Item will appear on the screen for 3 seconds each at different locations.
+                    Items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br>
+                    <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order).
                     <br><br>
-
-
-                    Some items will show up twice. <br><br>
-                    <b>If you saw the item before,</b><br><br>
-                    respond on the time bar when in the experiment did you last see it.
+                    <b>If you have not seen it before,</b> click in the purple box to the right. 
                     <br><br>
-                    <b>If you have not seen it before,</b> <br><br>click in the purple box to the right. 
-                    <br><br><br><br>
                     You will receive feedback on whether you are right or wrong about the old/new decision. <br>
-                    You will NOT receive feedback on your temporal decision.
+                    You will NOT receive feedback on your spatial and temporal decision.
                     <br><br><br>
 
                     <i>If the image size is too small, please enter the browser into full screen, and refresh the webpage to restart. </i>
-
                 </p>
     
                 <div class = 'StartButton'> 
@@ -348,7 +398,9 @@ body {
                     <br><br><br>
                     You have viewed all the images. <br><br>
 
-                    Now we will show you one image at a time. If you have seen the image before, please estimate when that item appeared during the viewing block and respond using the time bar. <br><br>
+                    Now we will show you one image at a time. If you have seen the image before, click on the location where you have seen it. <br><br>
+
+                    Additionally, please estimate when that item appeared during the viewing block and respond using the time bar. <br><br>
 
                     If you have not seen the image before, click on the purple button on the right.
                    
@@ -439,7 +491,7 @@ body {
     var IncludeBackGroundBoxes = 1; // 1 = box visible, 0 = box unvisible 
     var imageSizeParam = 0.9;// default = 0.9;
     var practiceOn = 0; // 1= include practice, 0 = go straight into experiment. 
-    var viewingBlock_instr = "Try to remember the identity and timeline of each item"
+    var viewingBlock_instr = "Try to remember the identity and location of each item"
 
     // STIMULUS VARIABLES 
     var ImgList_all = []; 
@@ -458,6 +510,7 @@ body {
     var testingCounter = -1;
     var testingCounter_dis = -1;
     var testingCounter_tar = -1; 
+    var imageTypeQuiz = 0; // default false because it means they did not respond
 
     var trCount = document.querySelector("#trleft");
     var trTotal = document.querySelector("#tr-total");
@@ -518,12 +571,25 @@ body {
 
     // PREPARE IMAGE LIST
     function CreateImageList() {
-        for (var ImgInd=1; ImgInd<=(2400); ImgInd++){
-            var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
+        for (var ImgInd=1; ImgInd<=(100); ImgInd++){
+            // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
+            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-artificial.jpg");
+            // console.log(ImgInd); testing for images
             var curItem = {
-                            GetImg,
-                            'id': ImgInd,
-
+                GetImg,
+                'id': ImgInd,
+                'type': "artificial"
+            };
+            ImgList_all.push(curItem);
+        }
+        for (var ImgInd=101; ImgInd<=(200); ImgInd++){
+            // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
+            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-natural.jpg");
+            // console.log(ImgInd);
+            var curItem = {
+                GetImg,
+                'id': ImgInd,
+                'type': "natural"
             };
             ImgList_all.push(curItem);
         }
@@ -557,6 +623,7 @@ body {
     function consented (){
         $("#Consent").hide();
         $("#TestScreen").show(); 
+        window.scrollTo(0,0)
     }
 
     function startAudioCheck (){
@@ -571,7 +638,7 @@ body {
 
         $("#audioCheck").hide();
         $(".Instruction").hide();
-        $("#DisplayWindow").show();
+        $("#DisplayWindow").show(); // show the experimentation 
         $("#DisplayWindow_instr").show();
         $("#StimCanvas").show();
         $("#headboard").show();
@@ -665,6 +732,28 @@ body {
         ViewingBlock();
     }
 
+    function ImageType (resp, id) {
+        // console.log("Response: " + (id >= 101 && resp || id < 101 && !resp) ? true : false);
+        if (id >= 101 && resp) {
+            console.log("true");
+            imageTypeQuiz += 1; // add one correct point
+            document.getElementById('ResponseButton').style = "background-color: #befad9";
+            return true;
+        } if (id < 101 && !resp) {
+            console.log("true");
+            imageTypeQuiz += 1; // add one correct point
+            document.getElementById('ResponseButton').style = "background-color: #befad9";
+            return true;
+        } else {
+            console.log('false');
+            // the goal is to have imageTypeQuiz = the number of images shown (50)
+            document.getElementById('ResponseButton').style = "background-color: #FFB1AB";
+            return false;
+            
+        }
+        document.getElementById('ResponseButton').style = "background-color: #FFB1AB";
+        // return (id >= 101 && resp || id < 101 && !resp) ? true : false;
+    }
     // show n images one by one, n = MemSetSize
     function ViewingBlock (){
 
@@ -680,7 +769,6 @@ body {
             itemLocInd_1st = randomIntFromInterval(0,Num_boxes-1); // get a random location
             // what time 
             TimeBarLoc_1st = (viewImgCounter+1)/Tar_list.length*100; 
-            
             // LOAD IMAGE
             GetThisImageLoc = trial_img_loc[itemLocInd_1st];
             loadImage(thisImage,GetThisImageLoc);
@@ -693,6 +781,14 @@ body {
             
             // save to list 
             OldList.push([thisImage, thisImageID,itemLocInd_1st,viewImgCounter, TimeBarLoc_1st, ImageOnTime]) 
+            console.log("ID: " + thisImageID);
+            // new artificial and natural
+            // respbutton.addEventListener('click', (event) => {
+
+            // })
+            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button onclick='ImageType(true,thisImageID)'>Natural</button><button onclick='ImageType(false,thisImageID)'>Artificial</button>" ;
+            document.getElementById("ResponseButton_instr").style = "padding: 10px"
+            document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
         
         }else {
             // if all targets have been shown, present testingBlock instruction 
@@ -701,7 +797,9 @@ body {
             $("#StimCanvas").hide();
             $("#headboard").hide();
             $('#myProgress').hide();
+            $('#responseButton').hide();
             $("#viewingEnd").show();
+            document.getElementById("ResponseButton_instr").innerHTML = "There is nothing to do at the moment." ;
         }
     }
     
@@ -715,11 +813,13 @@ body {
         $("#viewingEnd").hide();
         $("#DisplayWindow").show();
         $("#DisplayWindow_instr").show();
+        $("#responseButton").show();
         $("#StimCanvas").show();
         $("#headboard").show();
         $('#myProgress').show();
         document.getElementById("ResponseButton_instr").innerHTML = "Click here if this is a new item" ;
-        document.getElementById("ResponseButton").style = " background-color:rgba(196, 182, 233, 0.932);" 
+        document.getElementById("ResponseButton").style = "background-color:rgba(196, 182, 233, 0.932);" 
+        
         TestingBlock()
 
         var elem = document.getElementById("myBar");
@@ -1049,6 +1149,7 @@ body {
         }
 
         console.log (euclidianDistance)
+        // the results output !! 
         trialResult_save = { 
             'blockName': save_blockName,
             'Setsize':MemSetSize,//
@@ -1070,6 +1171,7 @@ body {
             'clickLoc_row': clickLoc_row,//
             'clickLoc_column': clickLoc_column,//
             'Euclidian_distance':euclidianDistance,//
+            'imageTypeQuiz' : imageTypeQuiz,//
             'TimeBarLoc_1st':TimeBarLoc_1st, 
             'TimeBarLoc_resp': timeBarLoc_resp,
             'TimeError_RespMinus1stAppear':TimeError_RespMinus1stAppear,
@@ -1214,7 +1316,7 @@ body {
 
         filename = (curID_save + '_TMM.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
-
+        console.log(filename, filedata, "saveData_toServer");
         $.ajax({ //this requires jQuery
             type: 'post',
             cache: false,
@@ -1233,7 +1335,7 @@ body {
 
         filename = (curID_save + '_TMM_backup.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
-
+        console.log(filename, filedata);
         $.ajax({ //this requires jQuery
             type: 'post',
             cache: false,
@@ -1246,6 +1348,7 @@ body {
                 console.log("This is the successful callback");
             }
         });
+        
     }
 
      /* Get the documentElement (<html>) to display the page in fullscreen */

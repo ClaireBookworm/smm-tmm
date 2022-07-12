@@ -1,0 +1,100 @@
+
+
+body {
+    min-height: 100vh;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 1.2rem;
+    display: inline
+}
+
+.headboard {
+    height:5%;
+    text-align: center;
+}
+
+.ResponseButton {
+    /*background-color:rgba(196, 182, 233, 0.932);*/
+    width: 25vw;
+    height:95vh;
+    float:right;
+}
+.StimWindow {
+    float:right;
+    width:95vh;
+    height:95vh; /* same as width */
+    text-align: center; 
+}
+
+.DisplayWindow {
+    /*background-color:rgba(196, 182, 233, 0.932);*/
+    width: 20vw;
+    height:50vw;
+    position: relative; 
+}
+
+#DisplayWindow_img {
+    float:right;
+    margin-top: 80%;
+    margin-left:50%;
+    padding-right:10%
+}
+#DisplayWindow_instr {
+    float:right;
+}
+#ResponseButton_instr {
+    float:left;
+    margin-top: 90%;
+}
+
+#Break, #Break_retest {
+    text-align: center;
+    margin-top: 12%;
+}
+
+#Consent,#OsRecord, #demographic{
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    margin: 0 auto;
+    width: 70%;
+    color: rgba(0, 0, 0, 0.562);
+    
+}
+
+/* audio check button */
+#ACButton {
+    font-size: 1rem;
+    background-color:white ;
+    border: solid;
+    border-radius: 8px;
+    margin:2%
+}
+
+#myBar {
+  width: 0%;
+  height: 3.5vh;
+  background-color: #86aa04;
+  /*text-align: center;  To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: black; 
+  cursor: 'crosshair'
+}
+#myBar_start {
+    float:left;
+}
+
+#myBar_now {
+    float: right;
+}
+
+#myProgress {
+  width: 98%;
+  background-color: #ddd;
+  display:none;
+  cursor: crosshair
+}
+
+/* hide from initial display */
+.headboard, #DisplayWindow_instr, #Instruction2,#EndPage, #Break, #Break_retest, #Start_Experiment, #audioCheck, #demographic, #PracticeEnd, #TestingEnds, #viewingEnd{display: none}
+
