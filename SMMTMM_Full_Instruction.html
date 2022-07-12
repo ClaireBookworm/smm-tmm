@@ -737,21 +737,21 @@ body {
         if (id >= 101 && resp) {
             console.log("true");
             imageTypeQuiz += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #befad9";
+            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             return true;
         } if (id < 101 && !resp) {
             console.log("true");
             imageTypeQuiz += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #befad9";
+            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             return true;
         } else {
             console.log('false');
             // the goal is to have imageTypeQuiz = the number of images shown (50)
-            document.getElementById('ResponseButton').style = "background-color: #FFB1AB";
+            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             return false;
             
         }
-        document.getElementById('ResponseButton').style = "background-color: #FFB1AB";
+        // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
         // return (id >= 101 && resp || id < 101 && !resp) ? true : false;
     }
     // show n images one by one, n = MemSetSize
@@ -786,7 +786,15 @@ body {
             // respbutton.addEventListener('click', (event) => {
 
             // })
-            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button onclick='ImageType(true,thisImageID)'>Natural</button><button onclick='ImageType(false,thisImageID)'>Artificial</button>" ;
+            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button>Press Left Arrow for Natural</button><button>Press Right Arrow for Artificial </button>" ;
+            document.addEventListener('keydown', function(event) {
+                if(event.keyCode == 37) {
+                    ImageType(true,thisImageID)
+                }
+                else if(event.keyCode == 39) {
+                    ImageType(false,thisImageID)
+                }
+            });
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
         
