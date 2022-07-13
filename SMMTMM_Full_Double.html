@@ -1,4 +1,3 @@
-
 <!--
     Changed from SMM_TMM 
     SMMTMM_Full_Instructions.html
@@ -21,163 +20,184 @@
 <?php include 'save_data.php';?>
 
 <style>
+    body {
+        min-height: 100vh;
+        font-family: "Gill Sans", "Helvetica Neue", sans-serif;
+        font-size: 1.2rem;
+        display: inline
+    }
 
-body {
-    min-height: 100vh;
-    font-family: "Gill Sans", "Helvetica Neue", sans-serif;
-    font-size: 1.2rem;
-    display: inline
-}
+    .StartButton {
+        background-color: rgba(235, 235, 235, 0.5);
+        border-radius: 8px;
+        border-width: 0;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        /* font-size: 14px; */
+        font-weight: 500;
+        line-height: 20px;
+        list-style: none;
+        margin: 5px;
+        padding: 10px 12px;
+        text-align: center;
+        transition: all 200ms;
+        vertical-align: baseline;
+        white-space: nowrap;
+        touch-action: manipulation;
+    }
 
-.StartButton {
-    background-color: rgba(235, 235, 235, 0.5);
-  border-radius: 8px;
-  border-width: 0;
-  color: #333333;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* font-size: 14px; */
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  margin: 5px;
-  padding: 10px 12px;
-  text-align: center;
-  transition: all 200ms;
-  vertical-align: baseline;
-  white-space: nowrap;
-  touch-action: manipulation;
-}
+    .StartButton:hover {
+        background-color: rgba(235, 235, 235, 1);
+    }
 
-.StartButton:hover {
-    background-color: rgba(235, 235, 235, 1);
-}
-.StartButton > a:hover {
-    color: #8EDE0B;
-}
+    .StartButton>a:hover {
+        color: #8EDE0B;
+    }
 
-.headboard {
-    height:5%;
-    text-align: center;
-}
+    .headboard {
+        height: 5%;
+        text-align: center;
+    }
 
-.ResponseButton {
-    /*background-color:rgba(196, 182, 233, 0.932);*/
-    width: 25vw;
-    height:95vh;
-    float:right;
-    margin: 1rem 1rem auto auto;
-    border-radius: 10px;
-}
-.StimWindow {
-    float:right;
-    width:95vh;
-    height:95vh; /* same as width */
-    text-align: center; 
-}
+    .ResponseButton {
+        /*background-color:rgba(196, 182, 233, 0.932);*/
+        width: 25vw;
+        height: 95vh;
+        float: right;
+        margin: 1rem 1rem auto auto;
+        border-radius: 10px;
+    }
 
-.DisplayWindow {
-    /*background-color:rgba(196, 182, 233, 0.932);*/
-    width: 20vw;
-    height:50vw;
-    position: relative; 
-}
+    .StimWindow {
+        float: right;
+        width: 95vh;
+        height: 95vh;
+        /* same as width */
+        text-align: center;
+    }
 
-#DisplayWindow_img {
-    float:right;
-    margin-top: 80%;
-    margin-left:50%;
-    padding-right:10%
-}
-#DisplayWindow_instr {
-    float:right;
-}
-#ResponseButton_instr {
-    float:left;
-    margin-top: 90%;
-}
+    .DisplayWindow {
+        /*background-color:rgba(196, 182, 233, 0.932);*/
+        width: 20vw;
+        height: 50vw;
+        position: relative;
+    }
 
-#ResponseButton_instr > button {
+    #DisplayWindow_img {
+        float: right;
+        margin-top: 80%;
+        margin-left: 50%;
+        padding-right: 10%
+    }
 
-  background-color: rgba(235, 235, 235, 0.8);
-  border-radius: 8px;
-  border-width: 0;
-  color: #333333;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  margin: 5px;
-  padding: 10px 12px;
-  text-align: center;
-  transition: all 200ms;
-  vertical-align: baseline;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
+    #DisplayWindow_instr {
+        float: right;
+    }
 
-#ResponseButton_instr > button:hover {
-    background-color: rgba(185, 185, 185, 0.8);
-}
+    #ResponseButton_instr {
+        float: left;
+        margin-top: 90%;
+    }
 
-#Break, #Break_retest {
-    text-align: center;
-    margin-top: 12%;
-}
+    #ResponseButton_instr>button {
 
-#Consent,#OsRecord, #demographic{
-    font-family: var(--font);
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1;
-    margin: 0 auto;
-    width: 70%;
-    color: rgba(0, 0, 0, 0.562);
-    
-}
+        background-color: rgba(235, 235, 235, 0.8);
+        border-radius: 8px;
+        border-width: 0;
+        color: #333333;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        list-style: none;
+        margin: 5px;
+        padding: 10px 12px;
+        text-align: center;
+        transition: all 200ms;
+        vertical-align: baseline;
+        white-space: nowrap;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
 
-/* audio check button */
-#ACButton {
-    font-size: 1rem;
-    background-color:white ;
-    border: solid;
-    border-radius: 8px;
-    margin:2%
-}
+    #ResponseButton_instr>button:hover {
+        background-color: rgba(185, 185, 185, 0.8);
+    }
 
-#myBar {
-  width: 0%;
-  height: 3.5vh;
-  background-color: #86aa04;
-  /*text-align: center;  To center it horizontally (if you want) */
-  line-height: 30px; /* To center it vertically */
-  color: black; 
-  cursor: 'crosshair'
-}
-#myBar_start {
-    float:left;
-}
+    #Break,
+    #Break_retest {
+        text-align: center;
+        margin-top: 12%;
+    }
 
-#myBar_now {
-    float: right;
-}
+    #Consent,
+    #OsRecord,
+    #demographic {
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1;
+        margin: 0 auto;
+        width: 70%;
+        color: rgba(0, 0, 0, 0.562);
 
-#myProgress {
-  width: 98%;
-  background-color: #ddd;
-  display:none;
-  cursor: crosshair
-}
+    }
 
-/* hide from initial display */
-.headboard, #DisplayWindow_instr, #Instruction2,#EndPage, #Break, #Break_retest, #Start_Experiment, #audioCheck, #demographic, #PracticeEnd, #TestingEnds, #viewingEnd{display: none}
+    /* audio check button */
+    #ACButton {
+        font-size: 1rem;
+        background-color: white;
+        border: solid;
+        border-radius: 8px;
+        margin: 2%
+    }
 
+    #myBar {
+        width: 0%;
+        height: 3.5vh;
+        background-color: #86aa04;
+        /*text-align: center;  To center it horizontally (if you want) */
+        line-height: 30px;
+        /* To center it vertically */
+        color: black;
+        cursor: 'crosshair'
+    }
+
+    #myBar_start {
+        float: left;
+    }
+
+    #myBar_now {
+        float: right;
+    }
+
+    #myProgress {
+        width: 98%;
+        background-color: #ddd;
+        display: none;
+        cursor: crosshair
+    }
+
+    /* hide from initial display */
+    .headboard,
+    #DisplayWindow_instr,
+    #Instruction2,
+    #EndPage,
+    #Break,
+    #Break_retest,
+    #Start_Experiment,
+    #audioCheck,
+    #demographic,
+    #PracticeEnd,
+    #TestingEnds,
+    #viewingEnd {
+        display: none
+    }
 </style>
 
 <!------------------------------------------------------------------------------------------------>
@@ -185,68 +205,79 @@ body {
 <html lang="en">
 
 <main>
-<div id="Consent">
-    <br><br>
-    <h3>READ INSTRUCTIONS CAREFULLY BEFORE ACCEPTING TO PARTICIPATE:</h3>
+    <div id="Consent">
+        <br><br>
+        <h3>READ INSTRUCTIONS CAREFULLY BEFORE ACCEPTING TO PARTICIPATE:</h3>
 
-    <p>This study is part of a research project titled "How large is your visual memory capacity?". The principal investigator 
-    in charge of this study is Jeremy Wolfe (jwolfe@bwh.harvard.edu), Visual Attention Lab, Brigham and Women's Hospital. However, other research staff may be involved and can act on behalf of 
-    the person in charge.</p>
+        <p>This study is part of a research project titled "How large is your visual memory capacity?". The principal
+            investigator
+            in charge of this study is Jeremy Wolfe (jwolfe@bwh.harvard.edu), Visual Attention Lab, Brigham and Women's
+            Hospital. However, other research staff may be involved and can act on behalf of
+            the person in charge.</p>
 
-    <h4>Requirements:</h4>
-    <p> You need color vision for this task. </p>
-    <p> You need at least 20/25 visual acuity (with or without correction). </p>
-    <p> You have not participated in a similar study before. </p>
-    <p> Please complete this study on a desktop or laptop. </p>
+        <h4>Requirements:</h4>
+        <p> You need color vision for this task. </p>
+        <p> You need at least 20/25 visual acuity (with or without correction). </p>
+        <p> You have not participated in a similar study before. </p>
+        <p> Please complete this study on a desktop or laptop. </p>
 
-    <h4>Instructions:</h4>
-    <p><b>NOTE: </b>The experiment works in Safari and Chrome. If the experiment does not show in your browser, please notify the experimenter.</p> 
-    When you start a trial:
-    <p>(1) You will see one object image on the screen at a time, each will be appear for 3 seconds.  </p> 
-    <p>(2) Your job is to REMEMBER what objects you saw as well as when and where you saw them.  </p> 
-    <p>(3) Some items will appear twice. If you saw the item before, click the location where you thought you saw them (guess if you need to). Then, indicate on a time bar the time when you saw them.  </p>
-    <p>(4) Please respond as quickly and accurately as possible. We will record your responses and reaction time. </p> 
+        <h4>Instructions:</h4>
+        <p><b>NOTE: </b>The experiment works in Safari and Chrome. If the experiment does not show in your browser,
+            please notify the experimenter.</p>
+        When you start a trial:
+        <p>(1) You will see one object image on the screen at a time, each will be appear for 3 seconds. </p>
+        <p>(2) Your job is to REMEMBER what objects you saw as well as when and where you saw them. </p>
+        <p>(3) Some items will appear twice. If you saw the item before, click the location where you thought you saw
+            them (guess if you need to). Then, indicate on a time bar the time when you saw them. </p>
+        <p>(4) Please respond as quickly and accurately as possible. We will record your responses and reaction time.
+        </p>
 
-    <p>The experiment consists of around ~350 trials. You should be able to complete them in 30 minutes. You are alloted 60 min in total. 
-        You will receive $6 for your participation. <b>You will be compensated only if you complete all the trials and correctly identify whether an item is old/new at least 70% of the time.</b> </p>
+        <p>The experiment consists of around ~350 trials. You should be able to complete them in 30 minutes. You are
+            alloted 60 min in total.
+            You will receive $6 for your participation. <b>You will be compensated only if you complete all the trials
+                and correctly identify whether an item is old/new at least 70% of the time.</b> </p>
 
-    <p>By participating in this study, you will be part of the scientific effort to understand the 
-    functioning of the human visual system and the decision making process. </b></p> <br>
+        <p>By participating in this study, you will be part of the scientific effort to understand the
+            functioning of the human visual system and the decision making process. </b></p> <br>
 
-    <p> PLEASE READ THROUGH OUR CONSENT INFORMATION SHEET BEFORE CONSENTING TO PARTICIPATING IN OUR STUDY. <br>
-        <a href="https://search.bwh.harvard.edu/OnlineExperiment/Consent_InformationSheet_Online_Nov2021.pdf" target="_blank"> >> CONSENT INFORMATION SHEET  </a>
-    </p>
-    
-    <label><input type = "radio" class = "checkbox"> BY CHECKING THIS BOX, YOU ACKNOWLEDGE THAT YOU READ THE INSTRUCTIONS AND THE CONSENT INFORMATION SHEET, UNDERSTAND THE 
-        TASK AND YOU CONSENT TO PARTICIPATE IN THIS STUDY.<br>
-        <br>
-        </label> 
-    <br><br>
+        <p> PLEASE READ THROUGH OUR CONSENT INFORMATION SHEET BEFORE CONSENTING TO PARTICIPATING IN OUR STUDY. <br>
+            <a href="https://search.bwh.harvard.edu/OnlineExperiment/Consent_InformationSheet_Online_Nov2021.pdf"
+                target="_blank"> >> CONSENT INFORMATION SHEET </a>
+        </p>
 
-    <div id = "Start_Experiment" >
-    <a href = "javascript:consented()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
-  <!--<a href = "javascript:startTesting()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
---> 
-    
-    <br><br> <br><br>
+        <label><input type="radio" class="checkbox"> BY CHECKING THIS BOX, YOU ACKNOWLEDGE THAT YOU READ THE
+            INSTRUCTIONS AND THE CONSENT INFORMATION SHEET, UNDERSTAND THE
+            TASK AND YOU CONSENT TO PARTICIPATE IN THIS STUDY.<br>
+            <br>
+        </label>
+        <br><br>
 
-    
-</div>
+        <div id="Start_Experiment">
+            <a href="javascript:consented()" id='consentHIT' class='PressButton'> Click Here to Start the Experiment</a>
+        </div>
+        <!--<a href = "javascript:startTesting()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
+-->
 
-<div id = "demographic">
-    <br><br><br>
+        <br><br> <br><br>
 
-    <h3>Demographic Survey:</h3>
 
-    <p> This study is funded by the NIH (National Institutes of Health) and requires the report of the participants' demographic information. 
-        The questions in this form are voluntary. We collect this information to accurately report
-        the characteristics of our samples, and ensure that they are representative of the population. </p>
+    </div>
 
-    <form>     
-        <label for="age">What is your age:</label><br>
+    <div id="demographic">
+        <br><br><br>
+
+        <h3>Demographic Survey:</h3>
+
+        <p> This study is funded by the NIH (National Institutes of Health) and requires the report of the participants'
+            demographic information.
+            The questions in this form are voluntary. We collect this information to accurately report
+            the characteristics of our samples, and ensure that they are representative of the population. </p>
+
+        <form>
+            <label for="age">What is your age:</label><br>
             <input type="number" id="age" name="age"><br><br>
 
-        <label for="gender">Gender:</label><br>
+            <label for="gender">Gender:</label><br>
             <input type="radio" id="male" name="gender" value="male">
             <label for="male">Male</label><br>
             <input type="radio" id="female" name="gender" value="female">
@@ -256,385 +287,430 @@ body {
             <input type="radio" id="genderNoResponse" name="gender" value="genderNoResponse">
             <label for="genderNoResponse">Prefer Not to Respond</label><br><br>
 
-        <label for="citizenship">Are you a U.S. citizen:</label><br>
+            <label for="citizenship">Are you a U.S. citizen:</label><br>
             <input type="radio" id="isCitizen" name="citizenship" value="isCitizen">
             <label for="isCitizen">Yes</label><br>
             <input type="radio" id="notCitizen" name="citizenship" value="notCitizen">
             <label for="notCitizen">No</label><br><br>
 
-        <label for="ethnicity">Ethnic category:</label><br>
+            <label for="ethnicity">Ethnic category:</label><br>
             <input type="radio" id="HL" name="ethnicity" value="HL">
             <label for="HL">Hispanic or Latino</label><br>
             <input type="radio" id="notHL" name="ethnicity" value="notHL">
             <label for="notHL">Not Hispanic or Latino</label><br><br>
 
-        <label for="Race">Racial Categories (if more than one race, check all that apply):</label><br>
-            <input type="checkbox" id="AIAN" name="Race" value = "AIAN">
+            <label for="Race">Racial Categories (if more than one race, check all that apply):</label><br>
+            <input type="checkbox" id="AIAN" name="Race" value="AIAN">
             <label for="AIAN">American Indian/Alaska Native</label><br>
-            <input type="checkbox" id="asian" name="Race" value = "asian">
+            <input type="checkbox" id="asian" name="Race" value="asian">
             <label for="asian">Asian</label><br>
-            <input type="checkbox" id="NH" name="Race" value = "NH">
+            <input type="checkbox" id="NH" name="Race" value="NH">
             <label for="NH">Native Hawaiian or Other Pacific Islander</label><br>
-            <input type="checkbox" id="black" name="Race" value = "black">
+            <input type="checkbox" id="black" name="Race" value="black">
             <label for="black">Black or African American</label><br>
-            <input type="checkbox" id="white" name="Race" value = "white">
+            <input type="checkbox" id="white" name="Race" value="white">
             <label for="white">White</label><br>
-            <input type="checkbox" id="unsure" name="Race" value = "unsure">
+            <input type="checkbox" id="unsure" name="Race" value="unsure">
             <label for="unsure">Unsure/prefer not to respond</label><br>
-            <input type="checkbox" id="raceOther" name="Race" value = "raceOther">
+            <input type="checkbox" id="raceOther" name="Race" value="raceOther">
             <label for="raceOther">Other</label><br><br>
 
-        <label for="AddComments">Additional comments:</label><br>
+            <label for="AddComments">Additional comments:</label><br>
             <input type="text" id="AddComments" name="AddComments"><br><br>
 
-        <label for="mTurkId">If you are on mTurk, please enter your mTurk ID here:</label><br>
+            <label for="mTurkId">If you are on mTurk, please enter your mTurk ID here:</label><br>
             <input type="text" id="mTurkId" name="mTurkId"><br>
-        
-    </form> 
 
-    <br>
+        </form>
 
-    Thank you for your responses. Please click the submit button.<br><br><br>
-    <a href="javascript:SaveData()" class = 'PressButton'>Submit</a>
+        <br>
 
-    <br><br><br><br>
-</div> 
+        Thank you for your responses. Please click the submit button.<br><br><br>
+        <a href="javascript:SaveData()" class='PressButton'>Submit</a>
 
-<div class = "TestScreen" id = "TestScreen">
-    <body>
-        <div class = "ResponseButton" id = "ResponseButton"> 
-            <div id = "ResponseButton_instr"></div>
-        </div>
-        <div class = "StimWindow" id = "StimWindow" >    
-            <div class = "Instruction">
-                <p> 
-                    <!-- <br><br> -->
-                    <p style = "color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you saw 
-                    and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them <br></p>
+        <br><br><br><br>
+    </div>
+
+    <div class="TestScreen" id="TestScreen">
+
+        <body>
+            <div class="ResponseButton" id="ResponseButton">
+                <div id="ResponseButton_instr"></div>
+            </div>
+            <div class="StimWindow" id="StimWindow">
+                <div class="Instruction">
+                    <p>
+                        <!-- <br><br> -->
+                    <p style="color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you
+                        saw
+                        and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them <br></p>
                     <br>
-                    Item will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br>
-                    <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order).
+                    Item will appear on the screen for 3 seconds each at different locations. Some items will show up
+                    twice. <br>
+                    <b>If you saw the item before,</b> click the location on the screen where you thought you saw it
+                    (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
+                    terms of start to end order).
                     <br><br>
-                    <b>If you have not seen it before,</b> click in the purple box to the right. 
+                    <b>If you have not seen it before,</b> click in the purple box to the right.
                     <br><br>
                     You will receive feedback on whether you are right or wrong about the old/new decision. <br>
                     You will NOT receive feedback on your spatial and temporal decision.
                     <br><br><br>
 
-                    <i>If the image size is too small, please enter the browser into full screen, and refresh the webpage to restart. </i>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:startAudioCheck()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">NEXT</a>
-                    
-                </div>
-            </div>
+                    <i>If the image size is too small, please enter the browser into full screen, and refresh the
+                        webpage to restart. </i>
+                    </p>
 
-            <div class = "audioCheck" id = "audioCheck"> 
-                <br><br><br><br><br><br><br>
-                In the experiment, we will provide you with audio feedback. <br>
-                Before starting the experiment, please adjust your volume and make sure that you can clearly hear the sound effect when clicking on the buttons below. <br>
-                <br><br>
+                    <div class='StartButton'>
+                        <a href="javascript:startAudioCheck()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">NEXT</a>
 
-                <button onclick="playSound_pos()" id="ACButton" style = "color:green; border-color: green" > CORRECT </button>
-                <button onclick="playSound_neg()" id="ACButton" style = "color:maroon; border-color: maroon " > WRONG </button>
-
-                <br><br><br>
-                <div class = 'StartButton'> 
-                    <a href="javascript:startExp()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click to Start the Experiment</a>       
-                </div>
-            </div>
-
-            <div class = "Instruction2" id = "Instruction2">
-                <p> 
-                    <br><br><br>
-                    You have finished part 1. 
-                    <br><br>
-
-                    Now we will ask you again about the displays you saw earlier. Do your best. 
-                    <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:NextTrial_retest()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click here to start Part 2 </a>
-    
-                </div>
-            </div>
-
-            <div class = "TestingEnds" id = "TestingEnds">
-                <p> 
-                    <br><br><br><br><br><br>
-                    You have completed the experiment. Your accuracy for the old/new response is <span id="Practice_Accuracy"></span>%. <br><br>
-
-
-                    <br><br> <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:ExpEnd()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Continue </a>
-    
-                </div>
-            </div>
-            <div class = "PracticeEnd" id = "PracticeEnd">
-                <p> 
-                    <br><br><br>
-                    Great! You have completed the practice. <br><br>
-
-                    Now you will start the main experiment. Please answer as quickly and accurately as you can. <br><br>
-
-                    The main experiment takes about 45 min 
-                    <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:startTesting()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click here to begin </a>
-    
-                </div>
-            </div>
-
-            <div class = "viewingEnd" id = "viewingEnd">
-                <p> 
-                    <br><br><br>
-                    You have viewed all the images. <br><br>
-
-                    Now we will show you one image at a time. If you have seen the image before, click on the location where you have seen it. <br><br>
-
-                    Additionally, please estimate when that item appeared during the viewing block and respond using the time bar. <br><br>
-
-                    If you have not seen the image before, click on the purple button on the right.
-                   
-                    <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:TestingBlock_setup()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click here to begin </a>
-    
-                </div>
-            </div>
-
-<!--Break screen -->
-<div class = "Break" id = "Break">
-    <p> 
-        <br><br><br>
-        Click NEXT to start trial <span id="trleft">1</span>/<span id="tr-total">20</span>
-    </p>
-
-    <div class = 'StartButton'> 
-        <a href="javascript:DisplaySetup()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Next</a>
-
-    </div>
-</div>
-
-
-
-
-            <div class = "EndPage" id = "EndPage">
-                <p> 
-                    <br><br><br> <br><br><br>
-                    Done! You have finished the experiment. You can close the window now. 
-
-                    <br><br>
-
-                    Thanks.
-                    <br><br>
-                </p>
-    
-            </div>
-
-            <header class="headboard" id = "headboard" style= "background-color:transparent;">   </header>
-            <div class = "myProgress" id = "myProgress" >
-                 <div class = "myBar" id = "myBar">
-                     <div id = "myBar_start">Start</div>
-                    <div id = 'myBar_now'>End</div>
                     </div>
-            </div>
-            <canvas id="StimCanvas" style = "cursor:pointer" > </canvas>
-        </div>
+                </div>
 
-        <div class = "DisplayWindow" id = "DisplayWindow">    
-            <div id = "DisplayWindow_img"></div>
-            <div id = "DisplayWindow_instr"> Click Old Location <br> or Click in New Box</div>
-        </div>
-    </body>
-</div>
-
-<!-- ROUND TWO with full instructions! -->
-
-
-<div class = "TestScreen" id = "TestScreenP2">
-    <body>
-        <div class = "ResponseButton" id = "ResponseButton"> 
-            <div id = "ResponseButton_instr"></div>
-        </div>
-        <div class = "StimWindow" id = "StimWindow" >    
-            <div class = "Instruction">
-                <p> 
-                    <!-- <br><br> -->
-                    <p style = "color:red"> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you saw 
-                    and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p>
-                    <br>
-                    Life before, items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br>
-                    <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order).
+                <div class="audioCheck" id="audioCheck">
+                    <br><br><br><br><br><br><br>
+                    In the experiment, we will provide you with audio feedback. <br>
+                    Before starting the experiment, please adjust your volume and make sure that you can clearly hear
+                    the sound effect when clicking on the buttons below. <br>
                     <br><br>
-                    <b>If you have not seen it before,</b> click in the purple box to the right. 
+
+                    <button onclick="playSound_pos()" id="ACButton" style="color:green; border-color: green"> CORRECT
+                    </button>
+                    <button onclick="playSound_neg()" id="ACButton" style="color:maroon; border-color: maroon "> WRONG
+                    </button>
+
+                    <br><br><br>
+                    <div class='StartButton'>
+                        <a href="javascript:startExp()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click to Start the Experiment</a>
+                    </div>
+                </div>
+
+                <div class="Instruction2" id="Instruction2">
+                    <p>
+                        <br><br><br>
+                        You have finished part 1.
+                        <br><br>
+
+                        Now we will ask you again about the displays you saw earlier. Do your best.
+                        <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:NextTrial_retest()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click here to start Part 2 </a>
+
+                    </div>
+                </div>
+
+                <div class="TestingEnds" id="TestingEnds">
+                    <p>
+                        <br><br><br><br><br><br>
+                        You have completed the experiment. Your accuracy for the old/new response is <span
+                            id="Practice_Accuracy"></span>%. <br><br>
+
+
+                        <br><br> <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:ExpEnd()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Continue </a>
+
+                    </div>
+                </div>
+                <div class="PracticeEnd" id="PracticeEnd">
+                    <p>
+                        <br><br><br>
+                        Great! You have completed the practice. <br><br>
+
+                        Now you will start the main experiment. Please answer as quickly and accurately as you can.
+                        <br><br>
+
+                        The main experiment takes about 45 min
+                        <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:startTesting()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click here to begin </a>
+
+                    </div>
+                </div>
+
+                <div class="viewingEnd" id="viewingEnd">
+                    <p>
+                        <br><br><br>
+                        You have viewed all the images. <br><br>
+
+                        Now we will show you one image at a time. If you have seen the image before, click on the
+                        location where you have seen it. <br><br>
+
+                        Additionally, please estimate when that item appeared during the viewing block and respond using
+                        the time bar. <br><br>
+
+                        If you have not seen the image before, click on the purple button on the right.
+
+                        <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:TestingBlock_setup()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click here to begin </a>
+
+                    </div>
+                </div>
+
+                <!--Break screen -->
+                <div class="Break" id="Break">
+                    <p>
+                        <br><br><br>
+                        Click NEXT to start trial <span id="trleft">1</span>/<span id="tr-total">20</span>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:DisplaySetup()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Next</a>
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="EndPage" id="EndPage">
+                    <p>
+                        <br><br><br> <br><br><br>
+                        Done! You have finished the experiment. You can close the window now.
+
+                        <br><br>
+
+                        Thanks.
+                        <br><br>
+                    </p>
+
+                </div>
+
+                <header class="headboard" id="headboard" style="background-color:transparent;"> </header>
+                <div class="myProgress" id="myProgress">
+                    <div class="myBar" id="myBar">
+                        <div id="myBar_start">Start</div>
+                        <div id='myBar_now'>End</div>
+                    </div>
+                </div>
+                <canvas id="StimCanvas" style="cursor:pointer"> </canvas>
+            </div>
+
+            <div class="DisplayWindow" id="DisplayWindow">
+                <div id="DisplayWindow_img"></div>
+                <div id="DisplayWindow_instr"> Click Old Location <br> or Click in New Box</div>
+            </div>
+        </body>
+    </div>
+
+    <!-- ROUND TWO with full instructions! -->
+
+
+    <div class="TestScreen" id="TestScreenP2">
+
+        <body>
+            <div class="ResponseButton" id="ResponseButton">
+                <div id="ResponseButton_instr"></div>
+            </div>
+            <div class="StimWindow" id="StimWindow">
+                <div class="Instruction">
+                    <p>
+                        <!-- <br><br> -->
+                    <p style="color:red"> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you
+                        saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as
+                        you've
+                        been tested previously. <br></p>
+                    <br>
+                    Life before, items will appear on the screen for 3 seconds each at different locations. Some items
+                    will show up twice. <br>
+                    <b>If you saw the item before,</b> click the location on the screen where you thought you saw it
+                    (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
+                    terms of start to end order).
+                    <br><br>
+                    <b>If you have not seen it before,</b> click in the purple box to the right.
                     <br><br>
                     You will receive feedback on whether you are right or wrong about the old/new decision. <br>
                     You will still NOT receive feedback on your spatial and temporal decision.
                     <br><br><br>
 
                     <!-- <i>If the image size is too small, please enter the browser into full screen, and refresh the webpage to restart. </i> -->
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:startAudioCheck()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">NEXT</a>
-                    
-                </div>
-            </div>
+                    </p>
 
-            <div class = "audioCheck" id = "audioCheck"> 
-                <br><br><br><br><br><br><br>
-                Please check your audio feedback again, or, if not needed, press next to continue. <br>
-                Before starting the experiment, please adjust your volume and make sure that you can clearly hear the sound effect when clicking on the buttons below. <br>
-                <br><br>
+                    <div class='StartButton'>
+                        <a href="javascript:startAudioCheck()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">NEXT</a>
 
-                <button onclick="playSound_pos()" id="ACButton" style = "color:green; border-color: green" > CORRECT </button>
-                <button onclick="playSound_neg()" id="ACButton" style = "color:maroon; border-color: maroon " > WRONG </button>
-
-                <br><br><br>
-                <div class = 'StartButton'> 
-                    <a href="javascript:startExp()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click to Start the Experiment</a>       
-                </div>
-            </div>
-
-            <div class = "Instruction2" id = "Instruction2">
-                <p> 
-                    <br><br><br>
-                    You have finished part 1 of round 2.
-                    <br><br>
-
-                    Now we will ask you again about the displays you saw earlier. Do your best. 
-                    <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:NextTrial_retest()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click here to start Part 2 </a>
-    
-                </div>
-            </div>
-
-            <div class = "TestingEnds" id = "TestingEnds">
-                <p> 
-                    <br><br><br><br><br><br>
-                    You have completed the experiment. Your accuracy for the old/new response is <span id="Practice_Accuracy"></span>%. <br><br>
-
-
-                    <br><br> <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:ExpEnd2()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Continue </a>
-    
-                </div>
-            </div>
-
-            <div class = "PracticeEnd" id = "PracticeEnd">
-                <p> 
-                    <br><br><br>
-                    Great! You have completed the practice. <br><br>
-
-                    Now you will start the main experiment. Please answer as quickly and accurately as you can. <br><br>
-
-                    The main experiment takes about 45 min 
-                    <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:startTesting()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click here to begin </a>
-    
-                </div>
-            </div>
-
-            <div class = "viewingEnd" id = "viewingEnd">
-                <p> 
-                    <br><br><br>
-                    You have viewed all the images. <br><br>
-
-                    Now we will show you one image at a time. If you have seen the image before, click on the location where you have seen it. <br><br>
-
-                    Additionally, please estimate when that item appeared during the viewing block and respond using the time bar. <br><br>
-
-                    If you have not seen the image before, click on the purple button on the right.
-                   
-                    <br><br>
-                </p>
-    
-                <div class = 'StartButton'> 
-                    <a href="javascript:TestingBlock_setup()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Click here to begin </a>
-    
-                </div>
-            </div>
-
-            <div class = "EndPage" id = "EndPage">
-                <p> 
-                    <br><br><br> <br><br><br>
-                    Done! You have finished the experiment. You can close the window now. 
-
-                    <br><br>
-
-                    Thanks.
-                    <br><br>
-                </p>
-    
-            </div>
-
-            <header class="headboard" id = "headboard" style= "background-color:transparent;">   </header>
-            <div class = "myProgress" id = "myProgress" >
-                 <div class = "myBar" id = "myBar">
-                     <div id = "myBar_start">Start</div>
-                    <div id = 'myBar_now'>End</div>
                     </div>
+                </div>
+
+                <div class="audioCheck" id="audioCheck">
+                    <br><br><br><br><br><br><br>
+                    Please check your audio feedback again, or, if not needed, press next to continue. <br>
+                    Before starting the experiment, please adjust your volume and make sure that you can clearly hear
+                    the sound effect when clicking on the buttons below. <br>
+                    <br><br>
+
+                    <button onclick="playSound_pos()" id="ACButton" style="color:green; border-color: green"> CORRECT
+                    </button>
+                    <button onclick="playSound_neg()" id="ACButton" style="color:maroon; border-color: maroon "> WRONG
+                    </button>
+
+                    <br><br><br>
+                    <div class='StartButton'>
+                        <a href="javascript:startExp()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click to Start the Experiment</a>
+                    </div>
+                </div>
+
+                <div class="Instruction2" id="Instruction2">
+                    <p>
+                        <br><br><br>
+                        You have finished part 1 of round 2.
+                        <br><br>
+
+                        Now we will ask you again about the displays you saw earlier. Do your best.
+                        <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:NextTrial_retest()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click here to start Part 2 </a>
+
+                    </div>
+                </div>
+
+                <div class="TestingEnds" id="TestingEnds">
+                    <p>
+                        <br><br><br><br><br><br>
+                        You have completed the experiment. Your accuracy for the old/new response is <span
+                            id="Practice_Accuracy"></span>%. <br><br>
+
+
+                        <br><br> <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:ExpEnd2()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Continue </a>
+
+                    </div>
+                </div>
+
+                <div class="PracticeEnd" id="PracticeEnd">
+                    <p>
+                        <br><br><br>
+                        Great! You have completed the practice. <br><br>
+
+                        Now you will start the main experiment. Please answer as quickly and accurately as you can.
+                        <br><br>
+
+                        The main experiment takes about 45 min
+                        <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:startTesting()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click here to begin </a>
+
+                    </div>
+                </div>
+
+                <div class="viewingEnd" id="viewingEnd">
+                    <p>
+                        <br><br><br>
+                        You have viewed all the images. <br><br>
+
+                        Now we will show you one image at a time. If you have seen the image before, click on the
+                        location where you have seen it. <br><br>
+
+                        Additionally, please estimate when that item appeared during the viewing block and respond using
+                        the time bar. <br><br>
+
+                        If you have not seen the image before, click on the purple button on the right.
+
+                        <br><br>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:TestingBlock_setup()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Click here to begin </a>
+
+                    </div>
+                </div>
+
+                <div class="EndPage" id="EndPage">
+                    <p>
+                        <br><br><br> <br><br><br>
+                        Done! You have finished the experiment. You can close the window now.
+
+                        <br><br>
+
+                        Thanks.
+                        <br><br>
+                    </p>
+
+                </div>
+
+                <header class="headboard" id="headboard" style="background-color:transparent;"> </header>
+                <div class="myProgress" id="myProgress">
+                    <div class="myBar" id="myBar">
+                        <div id="myBar_start">Start</div>
+                        <div id='myBar_now'>End</div>
+                    </div>
+                </div>
+                <canvas id="StimCanvas" style="cursor:pointer"> </canvas>
             </div>
-            <canvas id="StimCanvas" style = "cursor:pointer" > </canvas>
-        </div>
 
-        <div class = "DisplayWindow" id = "DisplayWindow">    
-            <div id = "DisplayWindow_img"></div>
-            <div id = "DisplayWindow_instr"> Click Old Location <br> or Click in New Box</div>
-        </div>
-    </body>
-</div>
-
-<!--Break screen -->
-<div class = "Break" id = "Break">
-    <p> 
-        <br><br><br>
-        Click NEXT to start trial <span id="trleft">1</span>/<span id="tr-total">20</span>
-    </p>
-
-    <div class = 'StartButton'> 
-        <a href="javascript:DisplaySetup()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Next</a>
-
+            <div class="DisplayWindow" id="DisplayWindow">
+                <div id="DisplayWindow_img"></div>
+                <div id="DisplayWindow_instr"> Click Old Location <br> or Click in New Box</div>
+            </div>
+        </body>
     </div>
-</div>
 
-<div class = "Break_retest" id = "Break_retest">
-    <p> 
-        <br><br><br>
-        Click NEXT to start retest trial <span id="trleft2">1</span>/<span id="tr-total2">20</span>
-    </p>
+    <!--Break screen -->
+    <div class="Break" id="Break">
+        <p>
+            <br><br><br>
+            Click NEXT to start trial <span id="trleft">1</span>/<span id="tr-total">20</span>
+        </p>
 
-    <div class = 'StartButton'> 
-        <a href="javascript:NextTrial_retest()" class="nextButton" id="nextTrialButton" style="text-decoration: none;">Next</a>
+        <div class='StartButton'>
+            <a href="javascript:DisplaySetup2()" class="nextButton" id="nextTrialButton"
+                style="text-decoration: none;">Next</a>
 
+        </div>
     </div>
-</div>
+
+    <div class="Break_retest" id="Break_retest">
+        <p>
+            <br><br><br>
+            Click NEXT to start retest trial <span id="trleft2">1</span>/<span id="tr-total2">20</span>
+        </p>
+
+        <div class='StartButton'>
+            <a href="javascript:NextTrial_retest()" class="nextButton" id="nextTrialButton"
+                style="text-decoration: none;">Next</a>
+
+        </div>
+    </div>
 
 
-<audio id="audio_pos" src="https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Pos1.wav"></audio>
-<audio id="audio_neu" src="https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neutralclick.wav"></audio>
-<audio id="audio_neg" src="https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neg3.wav"></audio>
+    <audio id="audio_pos"
+        src="https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Pos1.wav"></audio>
+    <audio id="audio_neu"
+        src="https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neutralclick.wav"></audio>
+    <audio id="audio_neg"
+        src="https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neg3.wav"></audio>
 
 </main>
+
 </html>
 
 
@@ -644,7 +720,7 @@ body {
     // an earlier version and no longer used in the current experiment
 
     // PARAMETERS 
-    var MemSetSize = 25 //150;//25;//15; 
+    var MemSetSize = 3 //150;//25;//15; 
     var PresentationTime = 3000//000//00//00;//2000; // Presentation time of each item, in millisec
     var holdtime = 100; //
     var trialtotal = 12;
@@ -655,8 +731,8 @@ body {
     var viewingBlock_instr = "Try to remember the identity and location of each item"
 
     // STIMULUS VARIABLES 
-    var ImgList_all = []; 
-    var AllTestImage = []; 
+    var ImgList_all = [];
+    var AllTestImage = [];
     var Tar_list;
     var Dis_list;
     var totalImgNum = 2400;
@@ -670,8 +746,8 @@ body {
     var viewImgCounter = -1;
     var testingCounter = -1;
     var testingCounter_dis = -1;
-    var testingCounter_tar = -1; 
-    var imageTypeQuiz = 0; // default false because it means they did not respond
+    var testingCounter_tar = -1;
+    var imageTypeQuiz = [0, 0, 0]; // correct, incorrect, no response
 
     var trCount = document.querySelector("#trleft");
     var trTotal = document.querySelector("#tr-total");
@@ -681,7 +757,7 @@ body {
     trTotal2.textContent = trialtotal;
     var thisAccuracy;
     var FinalAccuracy = document.querySelector("#Practice_Accuracy");
-  
+
     //n-Back new Variables 
     var count_Allimages = 0;
     var OldList = [];
@@ -691,13 +767,13 @@ body {
     var GetThisImageLoc;
     var save_clickLoc;
     var thisImageLoc;
-    var thisImage; 
-    var ClickRegistered = 0; 
-    var timer1; 
-    var OldOrNewList; 
+    var thisImage;
+    var ClickRegistered = 0;
+    var timer1;
+    var OldOrNewList;
     var TimeBarLoc_1st = -1;
     var timeBarLoc_resp = -1;
-    var test_accuracy = []; 
+    var test_accuracy = [];
 
     // SAVE VARIABLES 
     var curID_save;
@@ -705,12 +781,12 @@ body {
     var save_blockNum;
     var save_blockName;
     var save_response;
-    var save_isCorrect; 
+    var save_isCorrect;
     var itemLoc_appear;
     var save_itemRowColumn;
     var get_clickLoc;
-    var save_RT; 
-    var thisImageID; 
+    var save_RT;
+    var thisImageID;
     var save_allResult = [];
     var test_timeStamp;
     var view_timeStamp
@@ -719,20 +795,20 @@ body {
     //SET UP CANVAS CCC
     // set canvas width and height equal to stimwindow. 
     var $StimCanvas = $('#StimCanvas'), $StimWin = $('.StimWindow');
-    $StimCanvas.attr({width: $StimWin.width(), height: $StimWin.height()});
+    $StimCanvas.attr({ width: $StimWin.width(), height: $StimWin.height() });
     var CanvasHeight = document.getElementById('StimCanvas').clientHeight;
     var CanvasWidth = document.getElementById('StimCanvas').clientWidth;
-    var BoxSize = CanvasHeight/9//CanvasHeight/9;
-    var MarginLeft = -CanvasHeight/14;
-    var MarginUp = -CanvasHeight/10;// CanvasHeight/20;
-    var GapSize = CanvasHeight/75;
+    var BoxSize = CanvasHeight / 9//CanvasHeight/9;
+    var MarginLeft = -CanvasHeight / 14;
+    var MarginUp = -CanvasHeight / 10;// CanvasHeight/20;
+    var GapSize = CanvasHeight / 75;
     const canvas = document.querySelector('#StimCanvas')
     const respbutton = document.querySelector('#ResponseButton')
     const myProgressBar = document.querySelector('#myProgress')
 
     // PREPARE IMAGE LIST
     function CreateImageList() {
-        for (var ImgInd=1; ImgInd<=(100); ImgInd++){
+        for (var ImgInd = 1; ImgInd <= (100); ImgInd++) {
             // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
             var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-artificial.jpg");
             // console.log(ImgInd); testing for images
@@ -743,7 +819,7 @@ body {
             };
             ImgList_all.push(curItem);
         }
-        for (var ImgInd=101; ImgInd<=(200); ImgInd++){
+        for (var ImgInd = 101; ImgInd <= (200); ImgInd++) {
             // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
             var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-natural.jpg");
             // console.log(ImgInd);
@@ -755,15 +831,15 @@ body {
             ImgList_all.push(curItem);
         }
         ImgList_all = shuffle(ImgList_all);
-        Tar_list = ImgList_all.slice(0,MemSetSize);
-        Dis_list = ImgList_all.slice(MemSetSize, MemSetSize*2)
-        AllTestImage= AllTestImage.concat(Tar_list, Dis_list)
+        Tar_list = ImgList_all.slice(0, MemSetSize);
+        Dis_list = ImgList_all.slice(MemSetSize, MemSetSize * 2)
+        AllTestImage = AllTestImage.concat(Tar_list, Dis_list)
         AllTestImage = shuffle(AllTestImage);
         //Tar_list_prac = ImgList_all.slice(MemSetSize*2, MemSetSize*2+MemSetSize_prac)
         //Dis_list_prac = ImgList_all.slice(MemSetSize*2+MemSetSize_prac, MemSetSize*2+MemSetSize_prac*2)
     }
 
-    CreateImageList() 
+    CreateImageList()
 
     // SET UP CANVAS 
     var c = document.getElementById("StimCanvas");
@@ -772,28 +848,28 @@ body {
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
-    $("#TestScreen").hide(); 
+    $("#TestScreen").hide();
     $("#TestScreenP2").hide(); // tag: DOUBLE // hide the second round test screen
     $('.checkbox').click(AcceptHIT);
-    
-    function AcceptHIT () {
+
+    function AcceptHIT() {
         $('#Start_Experiment').show();
         //openFullscreen()
     }
 
     //START TESTING  
-    function consented (){
+    function consented() {
         $("#Consent").hide();
-        $("#TestScreen").show(); 
-        window.scrollTo(0,0)
+        $("#TestScreen").show();
+        window.scrollTo(0, 0)
     }
 
-    function startAudioCheck (){
+    function startAudioCheck() {
         $(".Instruction").hide();
         $("#audioCheck").show()
     }
 
-    function startExp (){
+    function startExp() {
         experimentStartTime = (new Date()).getTime();
         console.log('Experiment start at ' + experimentStartTime);
         curID_save = experimentStartTime;
@@ -807,7 +883,7 @@ body {
         $('#myProgress').hide();
         document.getElementById("DisplayWindow").style = "background-color: white;"
 
-        if (practiceOn == 1){startPractice();}else{startTesting();}    
+        if (practiceOn == 1) { startPractice(); } else { startTesting(); }
     }
 
     /*function startPractice (){
@@ -828,7 +904,7 @@ body {
         test_accuracy = [];
     }*/
 
-    function startTesting (){
+    function startTesting() {
 
         $("#PracticeEnd").hide();
         $("#DisplayWindow").show();
@@ -836,50 +912,50 @@ body {
         $("#StimCanvas").show();
         $("#headboard").show();
         $('#myProgress').hide();
-        
+
         save_blockNum = 1;
         save_blockName = 'Test';
         OldList = [];;
         DisplaySetup()
-        
+
     }
 
     // A. START A TRIAL 
-    function DisplaySetup (){
-      
+    function DisplaySetup() {
+
         $("#TestScreen").show()
         $("#Break").hide()
-        
+
         //clear and set up display
         $("#DisplayWindow").hide();
-        document.getElementById("ResponseButton_instr").innerHTML = " " ;
+        document.getElementById("ResponseButton_instr").innerHTML = " ";
         document.getElementById("ResponseButton").style = "background-color: white;"
         //change headboard instruction 
-        document.getElementById("headboard").innerHTML = viewingBlock_instr ;// ccc
+        document.getElementById("headboard").innerHTML = viewingBlock_instr;// ccc
         document.getElementById("headboard").style.fontSize = '100%'
 
         //clean and set up canvas
-        ctx.clearRect(0, 0,CanvasHeight,CanvasWidth); 
+        ctx.clearRect(0, 0, CanvasHeight, CanvasWidth);
         //DRAW BOXES AND SAVE LOCATIONS
-        var BoxCount = 0; 
+        var BoxCount = 0;
         trial_img_loc = [];
         trial_jitter_x = [];
         trial_jitter_y = [];
         trial_img_row_column = [];
-        for (var nbox=1; nbox<=(7); nbox++){ //for each column
-            for (var nRow=1; nRow<=(7); nRow++){ // for each row
+        for (var nbox = 1; nbox <= (7); nbox++) { //for each column
+            for (var nRow = 1; nRow <= (7); nRow++) { // for each row
                 // draw box to current loc 
-                var jitterX = randomIntFromInterval(-CanvasHeight/55, CanvasHeight/55);
-                var jitterY = randomIntFromInterval(-CanvasHeight/55, CanvasHeight/55);
-                var xx = MarginLeft + (BoxSize * nbox) + GapSize*nbox + jitterX;
-                var yy = MarginUp + (BoxSize * nRow) + GapSize*nRow +jitterY;
+                var jitterX = randomIntFromInterval(-CanvasHeight / 55, CanvasHeight / 55);
+                var jitterY = randomIntFromInterval(-CanvasHeight / 55, CanvasHeight / 55);
+                var xx = MarginLeft + (BoxSize * nbox) + GapSize * nbox + jitterX;
+                var yy = MarginUp + (BoxSize * nRow) + GapSize * nRow + jitterY;
 
-                if (IncludeBackGroundBoxes == 1){
-                ctx.beginPath();
-                ctx.rect(xx, yy, BoxSize, BoxSize);
-                ctx.closePath(); 
-                ctx.lineWidth = 1;
-                ctx.stroke();     
+                if (IncludeBackGroundBoxes == 1) {
+                    ctx.beginPath();
+                    ctx.rect(xx, yy, BoxSize, BoxSize);
+                    ctx.closePath();
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
                 }
 
                 //save jtter for redrawing boxes 
@@ -887,72 +963,155 @@ body {
                 trial_jitter_y.push(jitterY);
                 // save xy coor 
                 trial_img_loc.push([xx, yy]);
-                trial_img_row_column.push ([nRow,nbox])
+                trial_img_row_column.push([nRow, nbox])
+            }
+        }
+
+        ViewingBlock();
+    }
+    function DisplaySetup2() {
+
+        $("#TestScreenP2").show()
+        $("#Break").hide()
+
+        //clear and set up display
+        $("#DisplayWindow").hide();
+        document.getElementById("ResponseButton_instr").innerHTML = " ";
+        document.getElementById("ResponseButton").style = "background-color: white;"
+        //change headboard instruction 
+        document.getElementById("headboard").innerHTML = viewingBlock_instr;// ccc
+        document.getElementById("headboard").style.fontSize = '100%'
+
+        //clean and set up canvas
+        ctx.clearRect(0, 0, CanvasHeight, CanvasWidth);
+        //DRAW BOXES AND SAVE LOCATIONS
+        var BoxCount = 0;
+        trial_img_loc = [];
+        trial_jitter_x = [];
+        trial_jitter_y = [];
+        trial_img_row_column = [];
+        for (var nbox = 1; nbox <= (7); nbox++) { //for each column
+            for (var nRow = 1; nRow <= (7); nRow++) { // for each row
+                // draw box to current loc 
+                var jitterX = randomIntFromInterval(-CanvasHeight / 55, CanvasHeight / 55);
+                var jitterY = randomIntFromInterval(-CanvasHeight / 55, CanvasHeight / 55);
+                var xx = MarginLeft + (BoxSize * nbox) + GapSize * nbox + jitterX;
+                var yy = MarginUp + (BoxSize * nRow) + GapSize * nRow + jitterY;
+
+                if (IncludeBackGroundBoxes == 1) {
+                    ctx.beginPath();
+                    ctx.rect(xx, yy, BoxSize, BoxSize);
+                    ctx.closePath();
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+
+                //save jtter for redrawing boxes 
+                trial_jitter_x.push(jitterX);
+                trial_jitter_y.push(jitterY);
+                // save xy coor 
+                trial_img_loc.push([xx, yy]);
+                trial_img_row_column.push([nRow, nbox])
             }
         }
 
         ViewingBlock();
     }
 
-    function ImageType (resp, id) {
+    function ImageType(resp, id) {
         // console.log("Response: " + (id >= 101 && resp || id < 101 && !resp) ? true : false);
         if (id >= 101 && resp) {
             console.log("true");
-            imageTypeQuiz += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #befad9";
+            imageTypeQuiz[0] += 1; // add one correct point
+            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             return true;
         } if (id < 101 && !resp) {
             console.log("true");
-            imageTypeQuiz += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #befad9";
+            imageTypeQuiz[0] += 1; // add one correct point
+            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             return true;
         } else {
             console.log('false');
+            imageTypeQuiz[1] += 1; // add one wrong point
             // the goal is to have imageTypeQuiz = the number of images shown (50)
-            document.getElementById('ResponseButton').style = "background-color: #FFB1AB";
+            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             return false;
-            
         }
-        document.getElementById('ResponseButton').style = "background-color: #FFB1AB";
-        // return (id >= 101 && resp || id < 101 && !resp) ? true : false;
+    }
+    function handler (event) {
+        if (event.repeat) {
+            console.log("repeat key")
+            return;
+        } 
+        if (event.keyCode == 37 && !event.repeat) {
+            ImageType(true, thisImageID)
+            document.removeEventListener('keydown', function (event) {})
+            return;
+        }
+        else if (event.keyCode == 39 && !event.repeat) {
+            ImageType(false, thisImageID)
+            return;
+        } else {
+            // imageTypeQuiz[2] += 1; // add no response point
+            console.log ("random letter");
+        }
+        console.log("this ran, which mean no input!")
+        imageTypeQuiz[2] += 1;
     }
     // show n images one by one, n = MemSetSize
-    function ViewingBlock (){
+    function ViewingBlock() {
 
         // loop func:Viewing Block until all target images are shown
-        if (viewImgCounter+1< MemSetSize){
+        if (viewImgCounter + 1 < MemSetSize) {
 
-            viewImgCounter ++
+            viewImgCounter++
             // which image 
             thisImage = Tar_list[viewImgCounter];
             thisImageID = thisImage.id; // find id of this image
             thisImage = thisImage.GetImg;
             // what location 
-            itemLocInd_1st = randomIntFromInterval(0,Num_boxes-1); // get a random location
+            itemLocInd_1st = randomIntFromInterval(0, Num_boxes - 1); // get a random location
             // what time 
-            TimeBarLoc_1st = (viewImgCounter+1)/Tar_list.length*100; 
+            TimeBarLoc_1st = (viewImgCounter + 1) / Tar_list.length * 100;
             // LOAD IMAGE
             GetThisImageLoc = trial_img_loc[itemLocInd_1st];
-            loadImage(thisImage,GetThisImageLoc);
+            loadImage(thisImage, GetThisImageLoc);
             // Remove Image after presentationtime 
-            timer1 = setTimeout(function() { // after 3000ms
+            timer1 = setTimeout(function () { // after 3000ms
                 //clear present image
                 clearThisImage(GetThisImageLoc)
-                ViewingBlock(); 
+                ViewingBlock();
             }, PresentationTime);
-            
+
             // save to list 
-            OldList.push([thisImage, thisImageID,itemLocInd_1st,viewImgCounter, TimeBarLoc_1st, ImageOnTime]) 
+            OldList.push([thisImage, thisImageID, itemLocInd_1st, viewImgCounter, TimeBarLoc_1st, ImageOnTime])
             console.log("ID: " + thisImageID);
             // new artificial and natural
             // respbutton.addEventListener('click', (event) => {
 
             // })
-            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button onclick='ImageType(true,thisImageID)'>Natural</button><button onclick='ImageType(false,thisImageID)'>Artificial</button>" ;
+            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button>Press Left Arrow for Natural</button><button>Press Right Arrow for Artificial </button>";
+
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
-        
-        }else {
+            document.addEventListener('keydown', function (event) {
+                if (event.keyCode == 37 && !event.repeat) {
+                    ImageType(true, thisImageID)
+                    document.removeEventListener('keydown', function (event) { exit() })
+                    // return;
+                }
+                else if (event.keyCode == 39 && !event.repeat) {
+                    ImageType(false, thisImageID)
+                    document.removeEventListener('keydown', function (event) { exit() })
+                    // return;
+                } else {
+                    // imageTypeQuiz[2] += 1; // add no response point
+                    console.log ("random letter");
+                }
+                console.log("this ran, which mean no input!")
+                imageTypeQuiz[2] += 1;
+            });
+        } else {
             // if all targets have been shown, present testingBlock instruction 
             $("#DisplayWindow").hide();
             $("#DisplayWindow_instr").hide();
@@ -961,15 +1120,15 @@ body {
             $('#myProgress').hide();
             $('#responseButton').hide();
             $("#viewingEnd").show();
-            document.getElementById("ResponseButton_instr").innerHTML = "There is nothing to do at the moment." ;
+            document.getElementById("ResponseButton_instr").innerHTML = "There is nothing to do at the moment.";
         }
     }
-    
-    function TestingBlock_setup (){
+
+    function TestingBlock_setup() {
         OldOrNewList_test = []; // 1 = new, 2 = old 
         var aaa = Array(MemSetSize).fill(1);
         var bbb = Array(MemSetSize).fill(0);
-        OldOrNewList_test = OldOrNewList_test.concat(aaa,bbb);
+        OldOrNewList_test = OldOrNewList_test.concat(aaa, bbb);
         OldOrNewList_test = shuffle(OldOrNewList_test);
 
         $("#viewingEnd").hide();
@@ -979,9 +1138,9 @@ body {
         $("#StimCanvas").show();
         $("#headboard").show();
         $('#myProgress').show();
-        document.getElementById("ResponseButton_instr").innerHTML = "Click here if this is a new item" ;
-        document.getElementById("ResponseButton").style = "background-color:rgba(196, 182, 233, 0.932);" 
-        
+        document.getElementById("ResponseButton_instr").innerHTML = "Click here if this is a new item";
+        document.getElementById("ResponseButton").style = "background-color:rgba(196, 182, 233, 0.932);"
+
         TestingBlock()
 
         var elem = document.getElementById("myBar");
@@ -990,18 +1149,18 @@ body {
     }
 
     var view_timeStamp;
-    function TestingBlock(){
-        save_clickLoc = [-1,-1];
+    function TestingBlock() {
+        save_clickLoc = [-1, -1];
         imgClick = 0; //reset click variable; 0 = no click has been registered 
 
-        if (testingCounter+1 < MemSetSize*2) {
+        if (testingCounter + 1 < MemSetSize * 2) {
             testingCounter++
             //Reset previous location in case values are saved incorrectly 
             isOld_item = -1;
             TimeBarLoc_1st = -1;
-           
+
             //  0 = new distractor
-            if (OldOrNewList_test[testingCounter]==0){
+            if (OldOrNewList_test[testingCounter] == 0) {
                 testingCounter_dis++
                 //get distractor image
                 thisImage = Dis_list[testingCounter_dis];
@@ -1010,41 +1169,41 @@ body {
                 isOld_item = 0;
                 thisImage_viewInd = -1;
                 view_timeStamp = -1;
-                
-            }else { //if 1 = old target 
+
+            } else { //if 1 = old target 
                 isOld_item = 1;
-                testingCounter_tar ++; 
+                testingCounter_tar++;
                 // pick one old item randomly 
-                var Rand_oldItem = randomIntFromInterval(0, OldList.length-1);
+                var Rand_oldItem = randomIntFromInterval(0, OldList.length - 1);
                 var thisOldItem = OldList[Rand_oldItem]; // reture 2x2 array [thisImageID,itemLocInd_1st]
                 thisImage = thisOldItem[0];
                 thisImageID = thisOldItem[1];
-                itemLocInd_1st = thisOldItem[2]; 
-                thisImage_viewInd = thisOldItem[3]; 
-                TimeBarLoc_1st = thisOldItem[4]; 
+                itemLocInd_1st = thisOldItem[2];
+                thisImage_viewInd = thisOldItem[3];
+                TimeBarLoc_1st = thisOldItem[4];
                 view_timeStamp = thisOldItem[5];
                 // remove this image from old list 
-                OldList.splice(Rand_oldItem,1); //remove array with the current index, 1 stands for remove one array starting from 'Rand_oldItem' position
-               
+                OldList.splice(Rand_oldItem, 1); //remove array with the current index, 1 stands for remove one array starting from 'Rand_oldItem' position
+
             }
 
             // LOAD IMAGES on the left of the screen and enable click
-            document.getElementById("DisplayWindow_img").innerHTML = "<img src = '" + thisImage +  "' ImgId = '" + thisImageID  + "' style =  height:15%; width:15%"  + ">" 
+            document.getElementById("DisplayWindow_img").innerHTML = "<img src = '" + thisImage + "' ImgId = '" + thisImageID + "' style =  height:15%; width:15%" + ">"
             test_timeStamp = (new Date()).getTime();
-            console.log('image test at ',test_timeStamp )
+            console.log('image test at ', test_timeStamp)
             canvas.addEventListener('click', Click_canvas)
             respbutton.addEventListener('click', Click_newLoc)
 
         } else {
 
             // get accuracy 
-            var sum = test_accuracy.reduce(function(a, b){
+            var sum = test_accuracy.reduce(function (a, b) {
                 return a + b;
             }, 0);
-            thisAccuracy = sum/test_accuracy.length*100;
-            var roundedAccuracy = Math.round(thisAccuracy*10)/10;
+            thisAccuracy = sum / test_accuracy.length * 100;
+            var roundedAccuracy = Math.round(thisAccuracy * 10) / 10;
             FinalAccuracy.textContent = roundedAccuracy;
-            
+
             $("#TestingEnds").show();
             $("#DisplayWindow").hide();
             $("#DisplayWindow_instr").hide();
@@ -1052,28 +1211,28 @@ body {
             $("#headboard").hide();
             $('#myProgress').hide();
 
-            document.getElementById("ResponseButton_instr").innerHTML = " " ;
+            document.getElementById("ResponseButton_instr").innerHTML = " ";
             document.getElementById("ResponseButton").style = "background-color: white;"
-        
-        }
-    }   
-    function ExpEnd() {
 
+        }
+    }
+    function ExpEnd() {
+        console.log("expand end 1");
         $("#StimCanvas").hide();
         $("#headboard").hide();
         $("#TestScreen").hide();
         $("#TestScreenP2").show();
         // $("#demographic").show();
-        // document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);" 
+        document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);"
 
     }
-    function ExpEnd2(){
-        
+    function ExpEnd2() {
+
         $("#StimCanvas").hide();
         $("#headboard").hide();
         $("#TestScreen").hide();
         $("#demographic").show();
-        document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);" 
+        document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);"
 
     }
 
@@ -1081,60 +1240,60 @@ body {
     // -------------------------------------------------------- Helper functions -----------------------------------------------------------// 
     // -------------------------------------------------------------------------------------------------------------------------------------// 
 
-    function moveBar (){
+    function moveBar() {
         var elem = document.getElementById("myBar");
-        var width = (count_Allimages+1)/OldOrNewList.length*100; // this is the width of the bar 
+        var width = (count_Allimages + 1) / OldOrNewList.length * 100; // this is the width of the bar 
 
         elem.style.width = width + "%";
         //elem.innerHTML = width + "%";
     }
 
-    function clearThisImage (GetThisImageLoc){
-        ctx.clearRect(GetThisImageLoc[0]+BoxSize*0.05, GetThisImageLoc[1]+BoxSize*0.05,BoxSize*imageSizeParam,BoxSize*imageSizeParam);        
+    function clearThisImage(GetThisImageLoc) {
+        ctx.clearRect(GetThisImageLoc[0] + BoxSize * 0.05, GetThisImageLoc[1] + BoxSize * 0.05, BoxSize * imageSizeParam, BoxSize * imageSizeParam);
     }
 
-    function loadImage(thisImage,GetThisImageLoc){
+    function loadImage(thisImage, GetThisImageLoc) {
 
         //Loading of the home test image 
         var showImage = new Image();
         //drawing of the test image 
         showImage.onload = function () {
             //draw background image
-            ctx.drawImage(showImage, GetThisImageLoc[0]+BoxSize*0.05, GetThisImageLoc[1]+BoxSize*0.05,BoxSize*imageSizeParam,BoxSize*imageSizeParam);
+            ctx.drawImage(showImage, GetThisImageLoc[0] + BoxSize * 0.05, GetThisImageLoc[1] + BoxSize * 0.05, BoxSize * imageSizeParam, BoxSize * imageSizeParam);
         };
         showImage.src = thisImage//.GetImg;
         ImageOnTime = (new Date()).getTime();
-        console.log('image viewed at',ImageOnTime)
+        console.log('image viewed at', ImageOnTime)
     }
 
-    function GetTime(){
+    function GetTime() {
         myProgressBar.addEventListener('click', Click_bar)
 
         //clean boxes
-        ctx.clearRect(0, 0,CanvasHeight,CanvasWidth); 
+        ctx.clearRect(0, 0, CanvasHeight, CanvasWidth);
         ctx.font = "1rem Arial"
-        ctx.fillText("Don't forget to mark when you saw this item on the timeline at the top! ", CanvasHeight/18,CanvasWidth/3)
-        ctx.fillText("", CanvasHeight/18,CanvasWidth/2.5)
-        
+        ctx.fillText("Don't forget to mark when you saw this item on the timeline at the top! ", CanvasHeight / 18, CanvasWidth / 3)
+        ctx.fillText("", CanvasHeight / 18, CanvasWidth / 2.5)
+
     }
 
-    function redrawBoxes (){
+    function redrawBoxes() {
 
         //clean boxes
-        ctx.clearRect(0, 0,CanvasHeight,CanvasWidth); 
-        for (var nbox=0; nbox<49; nbox++){
+        ctx.clearRect(0, 0, CanvasHeight, CanvasWidth);
+        for (var nbox = 0; nbox < 49; nbox++) {
             var thisLoc1 = trial_img_loc[nbox];
             ctx.beginPath();
             ctx.rect(thisLoc1[0], thisLoc1[1], BoxSize, BoxSize);
-            ctx.closePath(); 
+            ctx.closePath();
             ctx.lineWidth = 1;
-            ctx.stroke();     
+            ctx.stroke();
         }
     }
 
-    var Click_bar = function (e){
+    var Click_bar = function (e) {
 
-        if (isOld_item == 1){ //clicked when the item was old --> old/new correct 
+        if (isOld_item == 1) { //clicked when the item was old --> old/new correct 
 
             playSound_pos();
 
@@ -1143,13 +1302,13 @@ body {
             document.getElementById("headboard").style.fontSize = '150%'
             save_isCorrect = 1;
             test_accuracy = test_accuracy.concat(1);
-            toggle1= setTimeout(function() {
+            toggle1 = setTimeout(function () {
                 document.getElementById("headboard").innerHTML = " "
                 document.getElementById("headboard").style.color = "black"
                 document.getElementById("headboard").style.fontSize = '150%'
-            },1000)
+            }, 1000)
 
-            }else {
+        } else {
             playSound_neg();
             test_accuracy = test_accuracy.concat(0);
 
@@ -1158,12 +1317,12 @@ body {
             document.getElementById("headboard").style.fontSize = '150%'
 
             save_isCorrect = 0;
-            toggle1= setTimeout(function() {
+            toggle1 = setTimeout(function () {
                 document.getElementById("headboard").innerHTML = " "
                 document.getElementById("headboard").style.color = "black"
                 document.getElementById("headboard").style.fontSize = '150%'
 
-            },1000)
+            }, 1000)
 
         }
 
@@ -1173,129 +1332,129 @@ body {
         var pos = e.pageX - $(this).offset().left; //Position cursor
 
         console.log(max, pos)
-        timeBarLoc_resp = pos/max*100;
+        timeBarLoc_resp = pos / max * 100;
         ClickSummary()
 
-        setTimeout( function(){
-            ctx.clearRect(0, 0,CanvasHeight,CanvasWidth); 
+        setTimeout(function () {
+            ctx.clearRect(0, 0, CanvasHeight, CanvasWidth);
             redrawBoxes()
-        },500)
+        }, 500)
 
-        setTimeout( function(){
-                TestingBlock()
-        },1000)
+        setTimeout(function () {
+            TestingBlock()
+        }, 1000)
     }
 
-    var Click_canvas = function (e){
+    var Click_canvas = function (e) {
 
         //clearThisImage(GetThisImageLoc)
         //clearTimeout(timer1);
         save_response = 'SaidOld';
-        imgClick = 1; 
-        
+        imgClick = 1;
+
         getCursorPosition(canvas, e)
         canvas.removeEventListener('click', Click_canvas) // disable click on screen 
         respbutton.removeEventListener('click', Click_newLoc) // disable click on screen 
-        save_RT =  (new Date()).getTime() - ImageOnTime; //XXXX
-    
+        save_RT = (new Date()).getTime() - ImageOnTime; //XXXX
+
         playSound_neu2();
-       /*
-        if (isOld_item == 1){ //clicked when the item was old --> old/new correct 
-
-            playSound_pos();
-            
-            document.getElementById("headboard").innerHTML = "Correct! This is an old item"
-            document.getElementById("headboard").style.color = "green"
-            document.getElementById("headboard").style.fontSize = '150%'
-
-            save_isCorrect = 1;
-            toggle1= setTimeout(function() {
-                document.getElementById("headboard").innerHTML = " "
-                document.getElementById("headboard").style.color = "black"
-                document.getElementById("headboard").style.fontSize = '150%'
-            },1000)
-
-        }else {
-            playSound_neg();
-        
-            document.getElementById("headboard").innerHTML = "Wrong! This is a new item"
-            document.getElementById("headboard").style.color = "maroon"
-            document.getElementById("headboard").style.fontSize = '150%'
-
-            save_isCorrect = 0;
-            toggle1= setTimeout(function() {
-                document.getElementById("headboard").innerHTML = " "
-                document.getElementById("headboard").style.color = "black"
-                document.getElementById("headboard").style.fontSize = '150%'
-
-            },1000)
-
-        }
-        */
+        /*
+         if (isOld_item == 1){ //clicked when the item was old --> old/new correct 
+ 
+             playSound_pos();
+             
+             document.getElementById("headboard").innerHTML = "Correct! This is an old item"
+             document.getElementById("headboard").style.color = "green"
+             document.getElementById("headboard").style.fontSize = '150%'
+ 
+             save_isCorrect = 1;
+             toggle1= setTimeout(function() {
+                 document.getElementById("headboard").innerHTML = " "
+                 document.getElementById("headboard").style.color = "black"
+                 document.getElementById("headboard").style.fontSize = '150%'
+             },1000)
+ 
+         }else {
+             playSound_neg();
+         
+             document.getElementById("headboard").innerHTML = "Wrong! This is a new item"
+             document.getElementById("headboard").style.color = "maroon"
+             document.getElementById("headboard").style.fontSize = '150%'
+ 
+             save_isCorrect = 0;
+             toggle1= setTimeout(function() {
+                 document.getElementById("headboard").innerHTML = " "
+                 document.getElementById("headboard").style.color = "black"
+                 document.getElementById("headboard").style.fontSize = '150%'
+ 
+             },1000)
+ 
+         }
+         */
         GetTime()
 
     }
 
 
-    var Click_newLoc = function (e){
-        
-            clearThisImage(GetThisImageLoc)
-            clearTimeout(timer1)
-            imgClick = 0; 
-            
-            save_response = 'SaidNew';
-            respbutton.removeEventListener('click', Click_newLoc) // disable click on screen 
-            canvas.removeEventListener('click', Click_canvas) // disable click on screen 
-            save_RT =  (new Date()).getTime() - ImageOnTime; //XXXX
-            timeBarLoc_resp = -1; 
-        
-            if (isOld_item == 0){ //clicked when the item was old --> old/new correct 
+    var Click_newLoc = function (e) {
 
-                playSound_pos();
+        clearThisImage(GetThisImageLoc)
+        clearTimeout(timer1)
+        imgClick = 0;
 
-                document.getElementById("headboard").innerHTML = "Correct! This is a new item"
-                document.getElementById("headboard").style.color = "green"
+        save_response = 'SaidNew';
+        respbutton.removeEventListener('click', Click_newLoc) // disable click on screen 
+        canvas.removeEventListener('click', Click_canvas) // disable click on screen 
+        save_RT = (new Date()).getTime() - ImageOnTime; //XXXX
+        timeBarLoc_resp = -1;
+
+        if (isOld_item == 0) { //clicked when the item was old --> old/new correct 
+
+            playSound_pos();
+
+            document.getElementById("headboard").innerHTML = "Correct! This is a new item"
+            document.getElementById("headboard").style.color = "green"
+            document.getElementById("headboard").style.fontSize = '150%'
+
+            save_isCorrect = 1;
+            test_accuracy = test_accuracy.concat(1);
+            toggle1 = setTimeout(function () {
+                document.getElementById("headboard").innerHTML = " "
+                document.getElementById("headboard").style.color = "black"
+                document.getElementById("headboard").style.fontSize = '150%'
+            }, 1000)
+
+        } else {
+
+            playSound_neg();
+            test_accuracy = test_accuracy.concat(0);
+
+            document.getElementById("headboard").innerHTML = "Wrong! This is an old item"
+            document.getElementById("headboard").style.color = "maroon"
+            document.getElementById("headboard").style.fontSize = '150%'
+
+            save_isCorrect = 0;
+            toggle1 = setTimeout(function () {
+                document.getElementById("headboard").innerHTML = " "
+                document.getElementById("headboard").style.color = "black"
                 document.getElementById("headboard").style.fontSize = '150%'
 
-                save_isCorrect = 1;
-                test_accuracy = test_accuracy.concat(1);
-                toggle1= setTimeout(function() {
-                    document.getElementById("headboard").innerHTML = " "
-                    document.getElementById("headboard").style.color = "black"
-                    document.getElementById("headboard").style.fontSize = '150%'
-                },1000)
+            }, 1000)
 
-            }else {
-                
-                playSound_neg();
-                test_accuracy = test_accuracy.concat(0);
+        }
+        ClickSummary()
 
-                document.getElementById("headboard").innerHTML = "Wrong! This is an old item"
-                document.getElementById("headboard").style.color = "maroon"
-                document.getElementById("headboard").style.fontSize = '150%'
+        setTimeout(function () {
+            TestingBlock()
+        }, 500)
 
-                save_isCorrect = 0;
-                toggle1= setTimeout(function() {
-                    document.getElementById("headboard").innerHTML = " "
-                    document.getElementById("headboard").style.color = "black"
-                    document.getElementById("headboard").style.fontSize = '150%'
-
-                },1000)
-
-            }
-            ClickSummary()
-
-            setTimeout( function(){
-                TestingBlock()
-            },500)
-        
     }
 
-    function ClickSummary (){
-        
+    function ClickSummary() {
+
         //var xy_thisImage =[GetThisImageLoc[0]+BoxSize*0.05+BoxSize*0.90/2, GetThisImageLoc[1]+BoxSize*0.05+BoxSize*0.90/2 ]
-        var xy_1st_raw  = trial_img_loc[itemLocInd_1st];
-        var xy_1st = [xy_1st_raw[0]+BoxSize*0.05+BoxSize*0.90/2, xy_1st_raw[1]+BoxSize*0.05+BoxSize*0.90/2 ]
+        var xy_1st_raw = trial_img_loc[itemLocInd_1st];
+        var xy_1st = [xy_1st_raw[0] + BoxSize * 0.05 + BoxSize * 0.90 / 2, xy_1st_raw[1] + BoxSize * 0.05 + BoxSize * 0.90 / 2]
 
         var rc_1st = trial_img_row_column[itemLocInd_1st];
 
@@ -1303,103 +1462,103 @@ body {
         var clickLoc_row;
         var clickLoc_column;
         var timeBarError;
-        
 
-        if (imgClick ==1 ){
+
+        if (imgClick == 1) {
             //save_response = 'SaidOld';
-            euclidianDistance = Math.sqrt((xy_1st[0]-save_clickLoc[0])**2 + (xy_1st[1]-save_clickLoc[1])**2 );
-            clickLoc_row = Math.round((save_clickLoc[1]-MarginUp-BoxSize*0.5 )/(BoxSize+GapSize));
-            clickLoc_column = Math.round((save_clickLoc[0]-MarginLeft - BoxSize*0.5)/(BoxSize+GapSize));
-            TimeError_RespMinus1stAppear = timeBarLoc_resp-TimeBarLoc_1st;
+            euclidianDistance = Math.sqrt((xy_1st[0] - save_clickLoc[0]) ** 2 + (xy_1st[1] - save_clickLoc[1]) ** 2);
+            clickLoc_row = Math.round((save_clickLoc[1] - MarginUp - BoxSize * 0.5) / (BoxSize + GapSize));
+            clickLoc_column = Math.round((save_clickLoc[0] - MarginLeft - BoxSize * 0.5) / (BoxSize + GapSize));
+            TimeError_RespMinus1stAppear = timeBarLoc_resp - TimeBarLoc_1st;
         } else {
             //save_response = 'SaidNew';
             euclidianDistance = -1;
             clickLoc_row = -1;
-            clickLoc_column = -1; 
-            TimeError_RespMinus1stAppear = -1; 
+            clickLoc_column = -1;
+            TimeError_RespMinus1stAppear = -1;
         }
 
-        console.log (euclidianDistance)
+        console.log(euclidianDistance)
         // the results output !! 
-        trialResult_save = { 
+        trialResult_save = {
             'blockName': save_blockName,
-            'Setsize':MemSetSize,//
-            'cueLength':PresentationTime,//
-            'test_ind':testingCounter+1,
-            'test_timeStamp':test_timeStamp,
-            'view_ind': thisImage_viewInd+1,
+            'Setsize': MemSetSize,//
+            'cueLength': PresentationTime,//
+            'test_ind': testingCounter + 1,
+            'test_timeStamp': test_timeStamp,
+            'view_ind': thisImage_viewInd + 1,
             'view_timeStamp': view_timeStamp,
-            '1=OldItem':isOld_item,//
-            'Response':save_response,//
-            '1=correct':save_isCorrect,//r
+            '1=OldItem': isOld_item,//
+            'Response': save_response,//
+            '1=correct': save_isCorrect,//r
             'viewLoc_index': itemLocInd_1st,//
-            'viewLoc_x':xy_1st[0],
-            'viewLoc_y':xy_1st[1],
-            'viewLoc_row':rc_1st[0],//
-            'viewLoc_col':rc_1st[1],//
-            'clickLoc_x':save_clickLoc[0],//
-            'clickLoc_y':save_clickLoc[1], //
+            'viewLoc_x': xy_1st[0],
+            'viewLoc_y': xy_1st[1],
+            'viewLoc_row': rc_1st[0],//
+            'viewLoc_col': rc_1st[1],//
+            'clickLoc_x': save_clickLoc[0],//
+            'clickLoc_y': save_clickLoc[1], //
             'clickLoc_row': clickLoc_row,//
             'clickLoc_column': clickLoc_column,//
-            'Euclidian_distance':euclidianDistance,//
-            'imageTypeQuiz' : imageTypeQuiz,//
-            'TimeBarLoc_1st':TimeBarLoc_1st, 
+            'Euclidian_distance': euclidianDistance,//
+            'imageTypeQuiz': imageTypeQuiz,//
+            'TimeBarLoc_1st': TimeBarLoc_1st,
             'TimeBarLoc_resp': timeBarLoc_resp,
-            'TimeError_RespMinus1stAppear':TimeError_RespMinus1stAppear,
-            'RT':save_RT, 
+            'TimeError_RespMinus1stAppear': TimeError_RespMinus1stAppear,
+            'RT': save_RT,
             'LapseTimeSinceExpStart': (new Date()).getTime() - experimentStartTime,
-            'imageID':thisImageID, 
-            'CanvasHeight':CanvasHeight,
-            'CanvasWidth':CanvasWidth,
+            'imageID': thisImageID,
+            'CanvasHeight': CanvasHeight,
+            'CanvasWidth': CanvasWidth,
 
         };
 
         save_allResult.push(trialResult_save);//aaa
         console.log(trialResult_save)
-        saveData_toServer(trialResult_save);        
+        saveData_toServer(trialResult_save);
     }
-    
+
     function getCursorPosition(canvas, event) {
         const rect = canvas.getBoundingClientRect()
         const x = event.clientX - rect.left
         const y = event.clientY - rect.top
         console.log("x: " + x + " y: " + y)
-        save_clickLoc = [x,y];
+        save_clickLoc = [x, y];
     }
 
     //Play sounds 
-    function playSound_pos(){
-        var audio = new Audio ('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Pos1.wav')
+    function playSound_pos() {
+        var audio = new Audio('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Pos1.wav')
         audio.play();
     }
-    function playSound_neu(){
+    function playSound_neu() {
         //var sound = document.getElementById("audio_neu");
-        var audio = new Audio ('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neutralclick.wav')
+        var audio = new Audio('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neutralclick.wav')
         audio.play();
     }
-    function playSound_neg(){
-        var audio = new Audio ('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neg3.wav')
+    function playSound_neg() {
+        var audio = new Audio('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Neg3.wav')
         audio.play();
     }
 
-    function playSound_neu2 (){
-        var audio = new Audio ('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Pos_jump.wav')
+    function playSound_neu2() {
+        var audio = new Audio('https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Sounds/Pos_jump.wav')
         audio.play();
     }
 
     function randomIntFromInterval(min, max) { // min and max included 
         return Math.floor(Math.random() * (max - min + 1) + min)
-    }      
+    }
 
     function shuffle(a) {
-          var j, x, i;
-          for (i = a.length - 1; i > 0; i--) {
-              j = Math.floor(Math.random() * (i + 1));
-              x = a[i];
-              a[i] = a[j];
-              a[j] = x;
-          }
-          return a;
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
     }
 
     function SaveData() {
@@ -1414,24 +1573,24 @@ body {
         var check_O = document.getElementById('other').checked;
         var check_NA = document.getElementById('genderNoResponse').checked;
         var d_gender = "empty";
-        if (check_F == 1 ){d_gender = "female" } 
-        else if (check_M == 1){d_gender = "male"}
-        else if (check_O == 1) {d_gender = "other"}
-        else if (check_NA == 1) {d_gender = "noResponse"}; 
+        if (check_F == 1) { d_gender = "female" }
+        else if (check_M == 1) { d_gender = "male" }
+        else if (check_O == 1) { d_gender = "other" }
+        else if (check_NA == 1) { d_gender = "noResponse" };
         //citizen 
         var d_citizen = "empty";
         var check_Cyes = document.getElementById('isCitizen').checked;
         var check_Cno = document.getElementById('notCitizen').checked;
-        if (check_Cyes == 1){ d_citizen = "Yes"}
-        else if (check_Cno == 1){d_citizen = "No"}; 
+        if (check_Cyes == 1) { d_citizen = "Yes" }
+        else if (check_Cno == 1) { d_citizen = "No" };
         //ethnicity 
         var d_ethnicity = "empty";
         var check_HL = document.getElementById('HL').checked;
-        var check_notHL =  document.getElementById('notHL').checked;
-        if (check_HL == 1){d_ethnicity = "Hispanic or Latino"}
-        else if (check_notHL == 1){d_ethnicity = "Not Hispanic or Latino"};
+        var check_notHL = document.getElementById('notHL').checked;
+        if (check_HL == 1) { d_ethnicity = "Hispanic or Latino" }
+        else if (check_notHL == 1) { d_ethnicity = "Not Hispanic or Latino" };
         //race 
-        var d_race = []; 
+        var d_race = [];
         var check_AIAN = document.getElementById('AIAN').checked;
         var check_asian = document.getElementById('asian').checked;
         var check_NH = document.getElementById('NH').checked;
@@ -1439,42 +1598,42 @@ body {
         var check_white = document.getElementById('white').checked;
         var check_unsure = document.getElementById('unsure').checked;
         var check_raceOther = document.getElementById('raceOther').checked;
-        if (check_AIAN == 1){d_race = d_race + "American Indian/Alaska Native;"};
-        if (check_asian == 1){d_race = d_race + "Asian;"};
-        if (check_NH == 1){d_race = d_race + "Native Hawaiian or Other Pacific Islander;"};
-        if (check_black == 1){d_race = d_race + "Black or African American;"};
-        if (check_white == 1){d_race = d_race + "White;"};
-        if (check_unsure == 1){d_race = d_race + "Unsure/prefer not to respond;"};
-        if (check_raceOther == 1){d_race = d_race + "Other;"};
+        if (check_AIAN == 1) { d_race = d_race + "American Indian/Alaska Native;" };
+        if (check_asian == 1) { d_race = d_race + "Asian;" };
+        if (check_NH == 1) { d_race = d_race + "Native Hawaiian or Other Pacific Islander;" };
+        if (check_black == 1) { d_race = d_race + "Black or African American;" };
+        if (check_white == 1) { d_race = d_race + "White;" };
+        if (check_unsure == 1) { d_race = d_race + "Unsure/prefer not to respond;" };
+        if (check_raceOther == 1) { d_race = d_race + "Other;" };
 
         var OsComments = "empty";
-        OsComments = $("#AddComments").val(); 
+        OsComments = $("#AddComments").val();
 
         var OsmTurkId = "empty";
-        OsmTurkId = $("#mTurkId").val(); 
+        OsmTurkId = $("#mTurkId").val();
 
         var newDate = new Date();
-        d = { 
+        d = {
             "curID": curID_save,
             "curTime": newDate.today() + " @ " + newDate.timeNow(),
             "userAgent": navigator.userAgent,
             "windowWidth": $(window).width(),
             "windowHeight": $(window).height(),
             "screenWidth": screen.width,
-            "screenHeight": screen.height,    
+            "screenHeight": screen.height,
             "duration_ms": ((new Date()).getTime() - experimentStartTime),
-            "d_age":d_age,
+            "d_age": d_age,
             "d_gender": d_gender,
             "d_citizen": d_citizen,
             "d_ethnicity": d_ethnicity,
             "d_race": d_race,
-            "d_comments":OsComments,
+            "d_comments": OsComments,
             "d_mTurkID": OsmTurkId
         };
 
         saveData_toServer(d)
 
-        for (var i=0; i<save_allResult.length; i++) {
+        for (var i = 0; i < save_allResult.length; i++) {
             saveData_toServer2(save_allResult[i]);
         }
         saveData_toServer2(d)
@@ -1493,10 +1652,10 @@ body {
             cache: false,
             url: './save_data.php', // this is the path to the PHP script
             data: {
-            filename: filename,
-            filedata: filedata
+                filename: filename,
+                filedata: filedata
             },
-            success: function(msg) {
+            success: function (msg) {
                 console.log("This is the successful callback");
             }
         });
@@ -1512,17 +1671,17 @@ body {
             cache: false,
             url: './save_data.php', // this is the path to the PHP script
             data: {
-            filename: filename,
-            filedata: filedata
+                filename: filename,
+                filedata: filedata
             },
-            success: function(msg) {
+            success: function (msg) {
                 console.log("This is the successful callback");
             }
         });
-        
+
     }
 
-     /* Get the documentElement (<html>) to display the page in fullscreen */
+    /* Get the documentElement (<html>) to display the page in fullscreen */
     var elem = document.documentElement;
 
     /* View in fullscreen */
