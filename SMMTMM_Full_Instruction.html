@@ -845,20 +845,24 @@
             document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button>Press Left Arrow for Natural</button><button>Press Right Arrow for Artificial </button>";
 
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
-            document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"            
+            document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
             document.addEventListener('keydown', function (event) {
-                if (event.repeat) return;
                 if (event.keyCode == 37) {
                     ImageType(true, thisImageID)
-                    // continue;
+                    // document.removeEventListener('keydown', function (event) { exit() })
+                    return;
                 }
                 else if (event.keyCode == 39) {
                     ImageType(false, thisImageID)
+                    // document.removeEventListener('keydown', function (event) { exit() })
+                    return;
                 } else {
-                    imageTypeQuiz[2] += 1; // add no response point
+                    // imageTypeQuiz[2] += 1; // add no response point
+                    console.log("random letter");
                 }
+                console.log("this ran, which mean no input!")
+                imageTypeQuiz[2] += 1;
             });
-
         } else {
             // if all targets have been shown, present testingBlock instruction 
             $("#DisplayWindow").hide();
