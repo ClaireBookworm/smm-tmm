@@ -556,7 +556,7 @@
     // an earlier version and no longer used in the current experiment
 
     // PARAMETERS 
-    var MemSetSize = 3 //150;//25;//15; 
+    var MemSetSize = 1 //150;//25;//15; 
     var PresentationTime = 3000//000//00//00;//2000; // Presentation time of each item, in millisec
     var holdtime = 100; //
     var trialtotal = 12;
@@ -757,9 +757,25 @@
 
     }
 
+
+    function startTesting2() {
+        $("#DisplayWindow").show();
+        $("#DisplayWindow_instr").show();
+        $("#StimCanvas").show();
+        $("#headboard").show();
+        $('#myProgress').hide();
+        // $("#StimCanvas").show();
+
+        save_blockNum = 2;
+        save_blockName = 'Test2';
+        OldList = [];;
+        DisplaySetup()
+
+    }
+
     // A. START A TRIAL 
     function DisplaySetup() {
-
+        console.log("display setup");
         $("#TestScreen").show()
         $("#Break").hide()
 
@@ -918,12 +934,13 @@
                 if (event.keyCode === 37) {
                     ImageType(true, thisImageID)
                     // document.removeEventListener('keydown', function (event) { exit() })
-                    return window.removeEventListener('keyup', ImageType(true, 300), false);
+                    return false;
+                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
                 }
                 else if (event.keyCode === 39) {
                     ImageType(false, thisImageID);
-                    
-                    return window.removeEventListener('keyup', ImageType(true, 300), false);
+                    return false;
+                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
                 } else {
                     // imageTypeQuiz[2] += 1; // add no response point
                     console.log ("random letter");
@@ -1041,10 +1058,12 @@
         if (round == 1) {
             console.log("round 1")
             // startAudioCheck();
-            consented();
             $("#StimCanvas").hide();
             $("#headboard").hide();
-            $("#TestScreen").hide();
+            $("#TestingEnds").hide();
+            $("#ResponseButton").hide();
+            startTesting2();
+            // $("#TestScreen").hide();
             round += 1;
         } else if (round == 2) {
             console.log("round 2")
@@ -1055,7 +1074,7 @@
         }
         // $("#TestScreenP2")s.show();
         // $("#demographic").show();
-        document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);"
+        // document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);"
 
     }
     function ExpEnd2() {
