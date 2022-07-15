@@ -345,8 +345,7 @@
                         saw
                         and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them <br></p>
                     <br>
-                    Items will appear on the screen for 3 seconds each at different locations. Some items will show up
-                    twice. <br>
+                    Items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br>
                     <b>If you saw the item before,</b> click the location on the screen where you thought you saw it
                     (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
                     terms of start to end order).
@@ -846,19 +845,21 @@
 
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
-            document.addEventListener('keydown', function (event) {
-                if (event.keyCode == 37) {
+            document.addEventListener("keyup", (event) => {
+                event.preventDefault();
+                if (event.keyCode === 37) {
                     ImageType(true, thisImageID)
                     // document.removeEventListener('keydown', function (event) { exit() })
-                    return;
+                    return false;
+                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
                 }
-                else if (event.keyCode == 39) {
-                    ImageType(false, thisImageID)
-                    // document.removeEventListener('keydown', function (event) { exit() })
-                    return;
+                else if (event.keyCode === 39) {
+                    ImageType(false, thisImageID);
+                    return false;
+                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
                 } else {
                     // imageTypeQuiz[2] += 1; // add no response point
-                    console.log("random letter");
+                    console.log ("random letter");
                 }
                 console.log("this ran, which mean no input!")
                 imageTypeQuiz[2] += 1;

@@ -1,6 +1,6 @@
 <!--
     Changed from SMM_TMM 
-    SMMTMM_Full_Instructions.html
+    SMMTMM_Double.html
 
     Show n object, then show 2 n object, ask old new location, time
     Four conditions, 1 - tell both 2 - tell spatial  3 - tell temporal 4 - tell nothing
@@ -345,8 +345,7 @@
                         saw
                         and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them <br></p>
                     <br>
-                    Item will appear on the screen for 3 seconds each at different locations. Some items will show up
-                    twice. <br>
+                    Item will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br>
                     <b>If you saw the item before,</b> click the location on the screen where you thought you saw it
                     (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
                     terms of start to end order).
@@ -556,7 +555,7 @@
     // an earlier version and no longer used in the current experiment
 
     // PARAMETERS 
-    var MemSetSize = 1 //150;//25;//15; 
+    var MemSetSize = 2 //150;//25;//15; 
     var PresentationTime = 3000//000//00//00;//2000; // Presentation time of each item, in millisec
     var holdtime = 100; //
     var trialtotal = 12;
@@ -769,6 +768,8 @@
         save_blockNum = 2;
         save_blockName = 'Test2';
         OldList = [];;
+        viewImgCounter = -1;
+        CreateImageList();
         DisplaySetup()
 
     }
@@ -871,6 +872,7 @@
         ViewingBlock();
     }
 
+
     function ImageType(resp, id) {
         if (id >= 101 && resp) {
             console.log("true");
@@ -892,6 +894,7 @@
             // document.removeEventListener('keydown', function (event) { return; })
             return false;
         }
+        $(document).unbind('keyup', ImageType(300, false));
     }
     // show n images one by one, n = MemSetSize
     function ViewingBlock() {
@@ -925,29 +928,54 @@
             // respbutton.addEventListener('click', (event) => {
 
             // })
-            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button>Press Left Arrow for Natural</button><button>Press Right Arrow for Artificial </button>";
-
+            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button>Press a for Natural</button><button>Press l for Artificial </button>";
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
-            document.addEventListener("keyup", (event) => {
-                event.preventDefault();
-                if (event.keyCode === 37) {
-                    ImageType(true, thisImageID)
-                    // document.removeEventListener('keydown', function (event) { exit() })
-                    return false;
-                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
+
+            function respNatural () {
+                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                $(document).unbind('keyup', respNatural); //QQQ
+                if (thisImageID >= 101) {
+                    console.log("correct, it is natural")
+                    correctResponse(1);
+                    return true;
+                } else if (thisImageID < 101) {
+                    console.log("incorrect, it is artificial")
+                    correctResponse(2)
+                    return true;
                 }
-                else if (event.keyCode === 39) {
-                    ImageType(false, thisImageID);
-                    return false;
-                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
+            }
+            function respArtificial () {
+                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                $(document).unbind('keyup', respArtificial);
+                if (thisImageID < 101) {
+                    console.log("correct, it is artificial")
+                    correctResponse(1);
+                    return true;
+                } else if (thisImageID >= 101) {
+                    console.log("incorrect, it is natural")
+                    correctResponse(2)
+                    return true;
+                }
+            }
+
+            function correctResponse(correct) {
+                if (correct == 1) {
+                    imageTypeQuiz[0] += 1;
+                    console.log("correct");
+                } else if (correct == 2) {
+                    imageTypeQuiz[1] += 1;
+                    console.log("incorrect")
                 } else {
-                    // imageTypeQuiz[2] += 1; // add no response point
-                    console.log ("random letter");
+                    console.log("no response")
                 }
-                console.log("this ran, which mean no input!")
-                imageTypeQuiz[2] += 1;
-            });
+                // $(document).unbind('keyup', respNatural); //QQQ
+                // $(document).unbind('keyup', respArtificial);
+            }
+
+            $(document).bind('keyup', 'a', respNatural); //QQQ
+            $(document).bind('keyup', 'l', respArtificial); //QQQ
+
         } else {
             // if all targets have been shown, present testingBlock instruction 
             $("#DisplayWindow").hide();

@@ -575,3 +575,28 @@
 
 
 ```
+
+
+
+``` js
+
+            // document.addEventListener("keyup", (event) => {
+            //     event.preventDefault();
+            //     if (event.keyCode === 37) {
+            //         ImageType(true, thisImageID)
+            //         // document.removeEventListener('keydown', function (event) { exit() })
+            //         return false;
+            //         // return window.removeEventListener('keyup', ImageType(true, 300), false);
+            //     }
+            //     else if (event.keyCode === 39) {
+            //         ImageType(false, thisImageID);
+            //         return false;
+            //         // return window.removeEventListener('keyup', ImageType(true, 300), false);
+            //     } else {
+            //         // imageTypeQuiz[2] += 1; // add no response point
+            //         console.log ("random letter");
+            //     }
+            //     console.log("this ran, which mean no input!")
+            //     imageTypeQuiz[2] += 1;
+            // });
+```
