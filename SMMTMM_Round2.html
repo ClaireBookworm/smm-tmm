@@ -1,6 +1,6 @@
 <!--
     Changed from SMM_TMM 
-    SMMTMM_Double.html
+    SMMTMM_Full_Instructions.html
 
     Show n object, then show 2 n object, ask old new location, time
     Four conditions, 1 - tell both 2 - tell spatial  3 - tell temporal 4 - tell nothing
@@ -72,7 +72,7 @@
 
     .StimWindow {
         float: right;
-        width: 95vh;
+        width: 90vh;
         height: 95vh;
         /* same as width */
         text-align: center;
@@ -205,7 +205,7 @@
 <html lang="en">
 
 <main>
-    <div id="Consent">
+    <!-- <div id="Consent">
         <br><br>
         <h3>READ INSTRUCTIONS CAREFULLY BEFORE ACCEPTING TO PARTICIPATE:</h3>
 
@@ -255,13 +255,10 @@
         <div id="Start_Experiment">
             <a href="javascript:consented()" id='consentHIT' class='PressButton'> Click Here to Start the Experiment</a>
         </div>
-        <!--<a href = "javascript:startTesting()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
+        <a href = "javascript:startTesting()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
 -->
 
-        <br><br> <br><br>
-
-
-    </div>
+    </div> 
 
     <div id="demographic">
         <br><br><br>
@@ -332,20 +329,20 @@
     </div>
 
     <div class="TestScreen" id="TestScreen">
-
         <body>
             <div class="ResponseButton" id="ResponseButton">
                 <div id="ResponseButton_instr"></div>
             </div>
             <div class="StimWindow" id="StimWindow">
                 <div class="Instruction">
-                    <p>
-                        <!-- <br><br> -->
-                    <p style="color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you
-                        saw
-                        and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them <br></p>
+                    <!-- <p> -->
+                    <p style="color:red"> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you
+                        saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as
+                        you've
+                        been tested previously. <br></p>
                     <br>
-                    Item will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br>
+                    Life before, items will appear on the screen for 3 seconds each at different locations. Some items
+                    will show up twice. <br>
                     <b>If you saw the item before,</b> click the location on the screen where you thought you saw it
                     (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
                     terms of start to end order).
@@ -353,11 +350,8 @@
                     <b>If you have not seen it before,</b> click in the purple box to the right.
                     <br><br>
                     You will receive feedback on whether you are right or wrong about the old/new decision. <br>
-                    You will NOT receive feedback on your spatial and temporal decision.
+                    You will still NOT receive feedback on your spatial and temporal decision.
                     <br><br><br>
-
-                    <i>If the image size is too small, please enter the browser into full screen, and refresh the
-                        webpage to restart. </i>
                     </p>
 
                     <div class='StartButton'>
@@ -368,8 +362,8 @@
                 </div>
 
                 <div class="audioCheck" id="audioCheck">
-                    <br><br><br><br><br><br><br>
-                    In the experiment, we will provide you with audio feedback. <br>
+                    <br><br><br><br><br><br>
+                    Please check your audio feedback again, or, if not needed, press next to continue. <br>
                     Before starting the experiment, please adjust your volume and make sure that you can clearly hear
                     the sound effect when clicking on the buttons below. <br>
                     <br><br>
@@ -389,7 +383,7 @@
                 <div class="Instruction2" id="Instruction2">
                     <p>
                         <br><br><br>
-                        You have finished part 1.
+                        You have finished part 1 of round 2.
                         <br><br>
 
                         Now we will ask you again about the displays you saw earlier. Do your best.
@@ -419,6 +413,7 @@
 
                     </div>
                 </div>
+
                 <div class="PracticeEnd" id="PracticeEnd">
                     <p>
                         <br><br><br>
@@ -460,7 +455,6 @@
 
                     </div>
                 </div>
-
                 <!--Break screen -->
                 <div class="Break" id="Break">
                     <p>
@@ -474,7 +468,6 @@
 
                     </div>
                 </div>
-
 
 
 
@@ -508,7 +501,6 @@
         </body>
     </div>
 
-
     <!--Break screen -->
     <div class="Break" id="Break">
         <p>
@@ -517,7 +509,7 @@
         </p>
 
         <div class='StartButton'>
-            <a href="javascript:DisplaySetup2()" class="nextButton" id="nextTrialButton"
+            <a href="javascript:DisplaySetup()" class="nextButton" id="nextTrialButton"
                 style="text-decoration: none;">Next</a>
 
         </div>
@@ -555,7 +547,7 @@
     // an earlier version and no longer used in the current experiment
 
     // PARAMETERS 
-    var MemSetSize = 2 //150;//25;//15; 
+    var MemSetSize = 3 //150;//25;//15; 
     var PresentationTime = 3000//000//00//00;//2000; // Presentation time of each item, in millisec
     var holdtime = 100; //
     var trialtotal = 12;
@@ -583,7 +575,6 @@
     var testingCounter_dis = -1;
     var testingCounter_tar = -1;
     var imageTypeQuiz = [0, 0, 0]; // correct, incorrect, no response
-    var round = 1;
 
     var trCount = document.querySelector("#trleft");
     var trTotal = document.querySelector("#tr-total");
@@ -679,13 +670,13 @@
 
     // SET UP CANVAS 
     var c = document.getElementById("StimCanvas");
+    $("#StimCanvas").hide();
     var ctx = c.getContext("2d");
 
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------*/
-    $("#TestScreen").hide();
-    // $("#TestScreenP2").hide(); // tag: DOUBLE // hide the second round test screen
+    $("#TestScreen").show();
     $('.checkbox').click(AcceptHIT);
 
     function AcceptHIT() {
@@ -756,36 +747,9 @@
 
     }
 
-    function instructions() {
-        document.getElementsByClassName("Instruction").innerHTML = "<p> <p style='color:red'> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p> <br> Life before, items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br> <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order). <br><br> <b>If you have not seen it before,</b> click in the purple box to the right. <br><br> You will receive feedback on whether you are right or wrong about the old/new decision. <br> You will still NOT receive feedback on your spatial and temporal decision. <br><br><br> </p>"
-
-    }
-
-    function startTesting2() {
-        // $(".Instruction").hide(); // for second reound  
-        $("#DisplayWindow").show();
-        $("#DisplayWindow_instr").show();
-        $("#StimCanvas").show();
-        $("#headboard").show();
-        $('#myProgress').hide();
-        // $("#StimCanvas").show();
-        // document.getElementsByClassName("Instruction").innerHTML = "<p> <p style='color:red'> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p> <br> Life before, items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br> <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order). <br><br> <b>If you have not seen it before,</b> click in the purple box to the right. <br><br> You will receive feedback on whether you are right or wrong about the old/new decision. <br> You will still NOT receive feedback on your spatial and temporal decision. <br><br><br> </p>"
-
-        save_blockNum = 2;
-        save_blockName = 'Test2';
-        OldList = [];;
-        viewImgCounter = -1;
-        testingCounter = -1;
-        testingCounter_dis = -1;
-        testingCounter_tar = -1;
-        CreateImageList();
-        DisplaySetup()
-
-    }
-
     // A. START A TRIAL 
     function DisplaySetup() {
-        console.log("display setup");
+
         $("#TestScreen").show()
         $("#Break").hide()
 
@@ -832,57 +796,9 @@
 
         ViewingBlock();
     }
-    function DisplaySetup2() {
-
-        $("#TestScreenP2").show()
-        $("#Break").hide()
-
-        //clear and set up display
-        $("#DisplayWindow").hide();
-        document.getElementById("ResponseButton_instr").innerHTML = " ";
-        document.getElementById("ResponseButton").style = "background-color: white;"
-        //change headboard instruction 
-        document.getElementById("headboard").innerHTML = viewingBlock_instr;// ccc
-        document.getElementById("headboard").style.fontSize = '100%'
-
-        //clean and set up canvas
-        ctx.clearRect(0, 0, CanvasHeight, CanvasWidth);
-        //DRAW BOXES AND SAVE LOCATIONS
-        var BoxCount = 0;
-        trial_img_loc = [];
-        trial_jitter_x = [];
-        trial_jitter_y = [];
-        trial_img_row_column = [];
-        for (var nbox = 1; nbox <= (7); nbox++) { //for each column
-            for (var nRow = 1; nRow <= (7); nRow++) { // for each row
-                // draw box to current loc 
-                var jitterX = randomIntFromInterval(-CanvasHeight / 55, CanvasHeight / 55);
-                var jitterY = randomIntFromInterval(-CanvasHeight / 55, CanvasHeight / 55);
-                var xx = MarginLeft + (BoxSize * nbox) + GapSize * nbox + jitterX;
-                var yy = MarginUp + (BoxSize * nRow) + GapSize * nRow + jitterY;
-
-                if (IncludeBackGroundBoxes == 1) {
-                    ctx.beginPath();
-                    ctx.rect(xx, yy, BoxSize, BoxSize);
-                    ctx.closePath();
-                    ctx.lineWidth = 1;
-                    ctx.stroke();
-                }
-
-                //save jtter for redrawing boxes 
-                trial_jitter_x.push(jitterX);
-                trial_jitter_y.push(jitterY);
-                // save xy coor 
-                trial_img_loc.push([xx, yy]);
-                trial_img_row_column.push([nRow, nbox])
-            }
-        }
-
-        ViewingBlock();
-    }
-
 
     function ImageType(resp, id) {
+        // console.log("Response: " + (id >= 101 && resp || id < 101 && !resp) ? true : false);
         if (id >= 101 && resp) {
             console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
@@ -938,9 +854,9 @@
 
             // })
             document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button>Press Left Arrow for Natural</button><button>Press Right Arrow for Artificial </button>";
+
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
-
             function respNatural () {
                 document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
                 // $(document).unbind('keyup', respNatural); //QQQ
@@ -986,10 +902,8 @@
 
             $(document).bind('keyup', e => {if (e.keyCode == 37) {respNatural(); $(document).unbind('keyup');} else if (e.keyCode == 39) {respArtificial(); $(document).unbind('keyup');} else console.log("wrong key"); }); //QQQ
             // $(document).bind('keyup', 'l', respArtificial); //QQQ
-
         } else {
             // if all targets have been shown, present testingBlock instruction 
-            if (round == 2) { document.getElementById("#viewingEnd").innerHTML = "<p> <br><br><br> You have viewed all the images. <br><br> Now we will show you one image at a time. If you have seen the image before, click on the location where you have seen it. <br><br> Additionally, please estimate when that item appeared during the viewing block and respond using the time bar. <br><br> If you have not seen the image before, click on the purple button on the right. <br><br> </p><div class='StartButton'> <a href='javascript:TestingBlock_setup()'' class='nextButton' id='nextTrialButton' style='text-decoration: none;'>Click here to begin </a> </div> ";}
             $("#DisplayWindow").hide();
             $("#DisplayWindow_instr").hide();
             $("#StimCanvas").hide();
@@ -1007,7 +921,6 @@
         var bbb = Array(MemSetSize).fill(0);
         OldOrNewList_test = OldOrNewList_test.concat(aaa, bbb);
         OldOrNewList_test = shuffle(OldOrNewList_test);
-        console.log(OldOrNewList_test + " -> testing block setup") // answers DDD delete
 
         $("#viewingEnd").hide();
         $("#DisplayWindow").show();
@@ -1082,8 +995,6 @@
             var roundedAccuracy = Math.round(thisAccuracy * 10) / 10;
             FinalAccuracy.textContent = roundedAccuracy;
 
-
-
             $("#TestingEnds").show();
             $("#DisplayWindow").hide();
             $("#DisplayWindow_instr").hide();
@@ -1096,35 +1007,14 @@
 
         }
     }
+
     function ExpEnd() {
-        // console.log("expand end 1");
-        if (round == 1) {
-            console.log("round 1")
-            // startAudioCheck();
-            document.getElementsByClassName(".Instruction").innerHTML = "<p> <p style='color:red'> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p> <br> Life before, items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br> <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order). <br><br> <b>If you have not seen it before,</b> click in the purple box to the right. <br><br> You will receive feedback on whether you are right or wrong about the old/new decision. <br> You will still NOT receive feedback on your spatial and temporal decision. <br><br><br> </p>"
-            $(".Instruction").show();
-            // if(document.getElementById("#TestingEnds") != null){
-            // document.getElementById("#TestingEnds").innerHTML +="<p> <p style='color:red'> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p> <br> Life before, items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br> <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order). <br><br> <b>If you have not seen it before,</b> click in the purple box to the right. <br><br> You will receive feedback on whether you are right or wrong about the old/new decision. <br> You will still NOT receive feedback on your spatial and temporal decision. <br><br><br> </p>";
-            // }
-            document.getElementById("viewingEnd").innerHTML = "<p> <br><br><br> You have viewed all the images. <br><br> Now we will show you one image at a time. If you have seen the image before, click on the location where you have seen it. <br><br> Additionally, please estimate when that item appeared during the viewing block and respond using the time bar. <br><br> If you have not seen the image before, click on the purple button on the right. <br><br> </p> <p> <p style='color:red'> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p> <br> Life before, items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br> <b>If you saw the item before,</b> click the location on the screen where you thought you saw it (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in terms of start to end order). <br><br> <b>If you have not seen it before,</b> click in the purple box to the right. <br><br> You will receive feedback on whether you are right or wrong about the old/new decision. <br> You will still NOT receive feedback on your spatial and temporal decision. <br><br><br> </p><div class='StartButton'> <a href='javascript:TestingBlock_setup()'' class='nextButton' id='nextTrialButton' style='text-decoration: none;'>Click here to begin </a> </div>"
-            $("#StimCanvas").hide();
-            $("#headboard").hide();
-            $("#TestingEnds").hide();
-            $("#ResponseButton").hide();
-            startTesting2();
-            thisAccuracy = null;
-            // $("#TestScreen").hide();
-            round += 1;
-        } else if (round == 2) {
-            console.log("round 2")
-            $("#StimCanvas").hide();
-            $("#headboard").hide();
-            $("#TestScreen").hide();
-            $("#demographic").show();
-        }
-        // $("#TestScreenP2")s.show();
-        // $("#demographic").show();
-        // document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);"
+
+        $("#StimCanvas").hide();
+        $("#headboard").hide();
+        $("#TestScreen").hide();
+        $("#demographic").show();
+        document.getElementById("DisplayWindow").style = "background-color:rgba(196, 182, 233, 0.932);"
 
     }
 
@@ -1373,6 +1263,7 @@
         console.log(euclidianDistance)
         // the results output !! 
         trialResult_save = {
+            'round': "SECOND ROUND", // 
             'blockName': save_blockName,
             'Setsize': MemSetSize,//
             'cueLength': PresentationTime,//
@@ -1536,7 +1427,7 @@
     function saveData_toServer(thisData) {
         $('#demographic').hide();
 
-        filename = (curID_save + '_TMM.txt');//"2.txt"
+        filename = (curID_save + '_F2_TMM.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
         console.log(filename, filedata, "saveData_toServer");
         $.ajax({ //this requires jQuery
@@ -1555,7 +1446,7 @@
 
     function saveData_toServer2(thisData) {
 
-        filename = (curID_save + '_TMM_backup.txt');//"2.txt"
+        filename = (curID_save + '_F2_TMM_backup.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
         console.log(filename, filedata);
         $.ajax({ //this requires jQuery

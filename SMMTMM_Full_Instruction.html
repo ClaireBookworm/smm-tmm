@@ -266,66 +266,14 @@
     <div id="demographic">
         <br><br><br>
 
-        <h3>Demographic Survey:</h3>
-
-        <p> This study is funded by the NIH (National Institutes of Health) and requires the report of the participants'
-            demographic information.
-            The questions in this form are voluntary. We collect this information to accurately report
-            the characteristics of our samples, and ensure that they are representative of the population. </p>
+        <h3>mTurk ID:</h3>
 
         <form>
-            <label for="age">What is your age:</label><br>
-            <input type="number" id="age" name="age"><br><br>
-
-            <label for="gender">Gender:</label><br>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label><br>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br>
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label><br>
-            <input type="radio" id="genderNoResponse" name="gender" value="genderNoResponse">
-            <label for="genderNoResponse">Prefer Not to Respond</label><br><br>
-
-            <label for="citizenship">Are you a U.S. citizen:</label><br>
-            <input type="radio" id="isCitizen" name="citizenship" value="isCitizen">
-            <label for="isCitizen">Yes</label><br>
-            <input type="radio" id="notCitizen" name="citizenship" value="notCitizen">
-            <label for="notCitizen">No</label><br><br>
-
-            <label for="ethnicity">Ethnic category:</label><br>
-            <input type="radio" id="HL" name="ethnicity" value="HL">
-            <label for="HL">Hispanic or Latino</label><br>
-            <input type="radio" id="notHL" name="ethnicity" value="notHL">
-            <label for="notHL">Not Hispanic or Latino</label><br><br>
-
-            <label for="Race">Racial Categories (if more than one race, check all that apply):</label><br>
-            <input type="checkbox" id="AIAN" name="Race" value="AIAN">
-            <label for="AIAN">American Indian/Alaska Native</label><br>
-            <input type="checkbox" id="asian" name="Race" value="asian">
-            <label for="asian">Asian</label><br>
-            <input type="checkbox" id="NH" name="Race" value="NH">
-            <label for="NH">Native Hawaiian or Other Pacific Islander</label><br>
-            <input type="checkbox" id="black" name="Race" value="black">
-            <label for="black">Black or African American</label><br>
-            <input type="checkbox" id="white" name="Race" value="white">
-            <label for="white">White</label><br>
-            <input type="checkbox" id="unsure" name="Race" value="unsure">
-            <label for="unsure">Unsure/prefer not to respond</label><br>
-            <input type="checkbox" id="raceOther" name="Race" value="raceOther">
-            <label for="raceOther">Other</label><br><br>
-
-            <label for="AddComments">Additional comments:</label><br>
-            <input type="text" id="AddComments" name="AddComments"><br><br>
-
             <label for="mTurkId">If you are on mTurk, please enter your mTurk ID here:</label><br>
             <input type="text" id="mTurkId" name="mTurkId"><br>
-
         </form>
 
-        <br>
-
-        Thank you for your responses. Please click the submit button.<br><br><br>
+        <br><br><br>
         <a href="javascript:SaveData()" class='PressButton'>Submit</a>
 
         <br><br><br><br>
@@ -414,7 +362,9 @@
                     </p>
 
                     <div class='StartButton'>
+                        <!-- <a href="https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/SMMTMM_Round2.html" class="nextButton" id="nextTrialButton" -->
                         <a href="javascript:ExpEnd()" class="nextButton" id="nextTrialButton"
+                        
                             style="text-decoration: none;">Continue </a>
 
                     </div>
@@ -461,6 +411,21 @@
 
                     </div>
                 </div>
+                <!--Break screen -->
+                <div class="Break" id="Break">
+                    <p>
+                        <br><br><br>
+                        Click NEXT to start trial <span id="trleft">1</span>/<span id="tr-total">20</span>
+                    </p>
+
+                    <div class='StartButton'>
+                        <a href="javascript:DisplaySetup()" class="nextButton" id="nextTrialButton"
+                            style="text-decoration: none;">Next</a>
+
+                    </div>
+                </div>
+
+
 
                 <div class="EndPage" id="EndPage">
                     <p>
@@ -793,21 +758,23 @@
             console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.removeEventListener('keydown', function (event) { exit() })
             return true;
-        } if (id < 101 && !resp) {
+        } else if (id < 101 && !resp) {
             console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.removeEventListener('keydown', function (event) { exit() })
             return true;
-        } else {
+        } else if (id < 101 && resp || id >=101 && !resp) {
             console.log('false');
             imageTypeQuiz[1] += 1; // add one wrong point
             // the goal is to have imageTypeQuiz = the number of images shown (50)
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.removeEventListener('keydown', function (event) { return; })
             return false;
         }
-        // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
-        // return (id >= 101 && resp || id < 101 && !resp) ? true : false;
+        $(document).unbind('keyup', ImageType(300, false));
     }
     // show n images one by one, n = MemSetSize
     function ViewingBlock() {
@@ -845,25 +812,51 @@
 
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
-            document.addEventListener("keyup", (event) => {
-                event.preventDefault();
-                if (event.keyCode === 37) {
-                    ImageType(true, thisImageID)
-                    // document.removeEventListener('keydown', function (event) { exit() })
-                    return false;
-                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
+            function respNatural () {
+                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                // $(document).unbind('keyup', respNatural); //QQQ
+                if (thisImageID >= 101) {
+                    console.log("correct, it is natural")
+                    correctResponse(1);
+                    return true;
+                } else if (thisImageID < 101) {
+                    console.log("incorrect, it is artificial")
+                    correctResponse(2)
+                    return true;
                 }
-                else if (event.keyCode === 39) {
-                    ImageType(false, thisImageID);
-                    return false;
-                    // return window.removeEventListener('keyup', ImageType(true, 300), false);
+            }
+            function respArtificial () {
+                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                // $(document).unbind('keyup', respArtificial); 
+                if (thisImageID < 101) {
+                    console.log("correct, it is artificial")
+                    correctResponse(1);
+                    return true;
+                } else if (thisImageID >= 101) {
+                    console.log("incorrect, it is natural")
+                    correctResponse(2)
+                    return true;
+                }
+            }
+
+            function correctResponse(correct) {
+                if (correct == 1) {
+                    imageTypeQuiz[0] += 1;
+                    console.log("correct");
+                } else if (correct == 2) {
+                    imageTypeQuiz[1] += 1;
+                    console.log("incorrect")
                 } else {
-                    // imageTypeQuiz[2] += 1; // add no response point
-                    console.log ("random letter");
+                    console.log("no response")
                 }
-                console.log("this ran, which mean no input!")
-                imageTypeQuiz[2] += 1;
-            });
+                // $(document).unbind('keyup', e => {if (e.keyCode == 37) respNatural(); else if (e.keyCode == 39) respArtificial(); else console.log("no unbinding")}); //QQQ
+                // $(document).unbind('keyup', respArtificial);
+                // $(document).unbind('keyup', respNatural);
+                // $(document).unbind('keyup');
+            }
+
+            $(document).bind('keyup', e => {if (e.keyCode == 37) {respNatural(); $(document).unbind('keyup');} else if (e.keyCode == 39) {respArtificial(); $(document).unbind('keyup');} else console.log("wrong key"); }); //QQQ
+            // $(document).bind('keyup', 'l', respArtificial); //QQQ
         } else {
             // if all targets have been shown, present testingBlock instruction 
             $("#DisplayWindow").hide();
@@ -1225,6 +1218,7 @@
         console.log(euclidianDistance)
         // the results output !! 
         trialResult_save = {
+            'round': "FIRST ROUND FULL", //
             'blockName': save_blockName,
             'Setsize': MemSetSize,//
             'cueLength': PresentationTime,//
@@ -1309,49 +1303,49 @@
 
         // save demographic info
         //age 
-        var d_age = "empty";
-        d_age = document.getElementById('age').value;
-        //gender
-        var check_F = document.getElementById('female').checked;
-        var check_M = document.getElementById('male').checked;
-        var check_O = document.getElementById('other').checked;
-        var check_NA = document.getElementById('genderNoResponse').checked;
-        var d_gender = "empty";
-        if (check_F == 1) { d_gender = "female" }
-        else if (check_M == 1) { d_gender = "male" }
-        else if (check_O == 1) { d_gender = "other" }
-        else if (check_NA == 1) { d_gender = "noResponse" };
-        //citizen 
-        var d_citizen = "empty";
-        var check_Cyes = document.getElementById('isCitizen').checked;
-        var check_Cno = document.getElementById('notCitizen').checked;
-        if (check_Cyes == 1) { d_citizen = "Yes" }
-        else if (check_Cno == 1) { d_citizen = "No" };
-        //ethnicity 
-        var d_ethnicity = "empty";
-        var check_HL = document.getElementById('HL').checked;
-        var check_notHL = document.getElementById('notHL').checked;
-        if (check_HL == 1) { d_ethnicity = "Hispanic or Latino" }
-        else if (check_notHL == 1) { d_ethnicity = "Not Hispanic or Latino" };
-        //race 
-        var d_race = [];
-        var check_AIAN = document.getElementById('AIAN').checked;
-        var check_asian = document.getElementById('asian').checked;
-        var check_NH = document.getElementById('NH').checked;
-        var check_black = document.getElementById('black').checked;
-        var check_white = document.getElementById('white').checked;
-        var check_unsure = document.getElementById('unsure').checked;
-        var check_raceOther = document.getElementById('raceOther').checked;
-        if (check_AIAN == 1) { d_race = d_race + "American Indian/Alaska Native;" };
-        if (check_asian == 1) { d_race = d_race + "Asian;" };
-        if (check_NH == 1) { d_race = d_race + "Native Hawaiian or Other Pacific Islander;" };
-        if (check_black == 1) { d_race = d_race + "Black or African American;" };
-        if (check_white == 1) { d_race = d_race + "White;" };
-        if (check_unsure == 1) { d_race = d_race + "Unsure/prefer not to respond;" };
-        if (check_raceOther == 1) { d_race = d_race + "Other;" };
+        // var d_age = "empty";
+        // d_age = document.getElementById('age').value;
+        // //gender
+        // var check_F = document.getElementById('female').checked;
+        // var check_M = document.getElementById('male').checked;
+        // var check_O = document.getElementById('other').checked;
+        // var check_NA = document.getElementById('genderNoResponse').checked;
+        // var d_gender = "empty";
+        // if (check_F == 1) { d_gender = "female" }
+        // else if (check_M == 1) { d_gender = "male" }
+        // else if (check_O == 1) { d_gender = "other" }
+        // else if (check_NA == 1) { d_gender = "noResponse" };
+        // //citizen 
+        // var d_citizen = "empty";
+        // var check_Cyes = document.getElementById('isCitizen').checked;
+        // var check_Cno = document.getElementById('notCitizen').checked;
+        // if (check_Cyes == 1) { d_citizen = "Yes" }
+        // else if (check_Cno == 1) { d_citizen = "No" };
+        // //ethnicity 
+        // var d_ethnicity = "empty";
+        // var check_HL = document.getElementById('HL').checked;
+        // var check_notHL = document.getElementById('notHL').checked;
+        // if (check_HL == 1) { d_ethnicity = "Hispanic or Latino" }
+        // else if (check_notHL == 1) { d_ethnicity = "Not Hispanic or Latino" };
+        // //race 
+        // var d_race = [];
+        // var check_AIAN = document.getElementById('AIAN').checked;
+        // var check_asian = document.getElementById('asian').checked;
+        // var check_NH = document.getElementById('NH').checked;
+        // var check_black = document.getElementById('black').checked;
+        // var check_white = document.getElementById('white').checked;
+        // var check_unsure = document.getElementById('unsure').checked;
+        // var check_raceOther = document.getElementById('raceOther').checked;
+        // if (check_AIAN == 1) { d_race = d_race + "American Indian/Alaska Native;" };
+        // if (check_asian == 1) { d_race = d_race + "Asian;" };
+        // if (check_NH == 1) { d_race = d_race + "Native Hawaiian or Other Pacific Islander;" };
+        // if (check_black == 1) { d_race = d_race + "Black or African American;" };
+        // if (check_white == 1) { d_race = d_race + "White;" };
+        // if (check_unsure == 1) { d_race = d_race + "Unsure/prefer not to respond;" };
+        // if (check_raceOther == 1) { d_race = d_race + "Other;" };
 
-        var OsComments = "empty";
-        OsComments = $("#AddComments").val();
+        // var OsComments = "empty";
+        // OsComments = $("#AddComments").val();
 
         var OsmTurkId = "empty";
         OsmTurkId = $("#mTurkId").val();
@@ -1366,12 +1360,12 @@
             "screenWidth": screen.width,
             "screenHeight": screen.height,
             "duration_ms": ((new Date()).getTime() - experimentStartTime),
-            "d_age": d_age,
-            "d_gender": d_gender,
-            "d_citizen": d_citizen,
-            "d_ethnicity": d_ethnicity,
-            "d_race": d_race,
-            "d_comments": OsComments,
+            // "d_age": d_age,
+            // "d_gender": d_gender,
+            // "d_citizen": d_citizen,
+            // "d_ethnicity": d_ethnicity,
+            // "d_race": d_race,
+            // "d_comments": OsComments,
             "d_mTurkID": OsmTurkId
         };
 
@@ -1382,13 +1376,14 @@
         }
         saveData_toServer2(d)
 
-        alert("Your data are saved. Thank you for participating!");
+        alert("Your data are saved. Click save for the next trial! Thank you!");
+        window.open("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/SMMTMM_Round2.html", "_self");
     }
 
     function saveData_toServer(thisData) {
         $('#demographic').hide();
 
-        filename = (curID_save + '_TMM.txt');//"2.txt"
+        filename = (curID_save + '_F1_TMM.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
         console.log(filename, filedata, "saveData_toServer");
         $.ajax({ //this requires jQuery
@@ -1407,7 +1402,7 @@
 
     function saveData_toServer2(thisData) {
 
-        filename = (curID_save + '_TMM_backup.txt');//"2.txt"
+        filename = (curID_save + '_F1_TMM_backup.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
         console.log(filename, filedata);
         $.ajax({ //this requires jQuery
