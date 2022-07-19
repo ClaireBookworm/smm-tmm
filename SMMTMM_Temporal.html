@@ -198,6 +198,7 @@
     #viewingEnd {
         display: none
     }
+
     .consent-list {
         line-height: 1.7rem;
     }
@@ -211,55 +212,62 @@
     <div id="Consent">
         <br><br>
         <h3>READ INSTRUCTIONS CAREFULLY BEFORE ACCEPTING TO PARTICIPATE:</h3>
-    
-        <p>This study is part of a research project titled "Spatial and Temporal Massive Memory". The principal investigator 
-        in charge of this study is Jeremy Wolfe (jwolfe@bwh.harvard.edu), Claire Wang, Visual Attention Lab, Brigham and Women's Hospital. However, other research staff may be involved and can act on behalf of 
-        the person in charge.</p>
-    
+
+        <p>This study is part of a research project titled "Spatial and Temporal Massive Memory". The principal
+            investigator
+            in charge of this study is Jeremy Wolfe (jwolfe@bwh.harvard.edu), Claire Wang, Visual Attention Lab, Brigham
+            and Women's Hospital. However, other research staff may be involved and can act on behalf of
+            the person in charge.</p>
+
         <h4>Requirements:</h4>
         <p> You need color vision for this task. </p>
         <p> You need at least 20/25 visual acuity (with or without correction). </p>
         <p> You have not participated in a similar study before. </p>
         <p> Please complete this study on a desktop or laptop. </p>
-    
+
         <h4>Instructions:</h4>
-        <p><b>NOTE: </b>The experiment works in Safari and Chrome. If the experiment does not show in your browser, please notify the experimenter.</p> 
+        <p><b>NOTE: </b>The experiment works in Safari and Chrome. If the experiment does not show in your browser,
+            please notify the experimenter.</p>
         When you start a trial:
         <ul class="consent-list">
             <li>You start with training:</li>
             <ol>
-                <li>You will see one object image on the screen at a time, each will be appear for 3 seconds. Please also indicate if the image is naturalor artificial/manmade as the image appears.</li>
-                <li>Your job is to REMEMBER what objects you saw as well as WHEN and WHERE you saw them. </li>
-                <li>If you saw the item before, click the location where you thought you saw
-                    them (guess if you need to). Then, indicate on a time bar the time when you saw them. </li>
+                <li>You will see one object image on the screen at a time, each will be appear for 3 seconds. Please
+                    also indicate if the image is natural or artificial/manmade as the image appears.</li>
+                <li>Your job is to REMEMBER what objects you saw as well as WHEN you saw them. </li>
             </ol>
             <li>Then, you will be tested:</li>
             <ol>
-                <li>You will be testing on the information you memorized in training. Images may be new or old.</li>
-                <li>Please respond as quickly and accurately as possible. We will record your responses and reaction time.</li>
+                <li>You will be tested on the information you memorized in training. Images may be new or old.</li>
+                <li>Please respond as quickly and accurately as possible. We will record your responses and reaction
+                    time.</li>
             </ol>
         </ul>
-    
-        <p>The experiment consists of around ~100 trials. You should be able to complete the experimence in ~45 minutes.
-            You will receive $8 per hour for your participation. <b>You will be compensated only if you complete all the trials
+
+        <p>The experiment consists of around ~100 trials. You should be able to complete the experiment in ~45 minutes.
+            You will receive $8 per hour for your participation. <b>You will be compensated only if you complete all the
+                trials
                 and correctly identify whether an item is old/new at least 60% of the time.</b> </p>
-    
-        <p>By participating in this study, you will be part of the scientific effort to understand the 
-        functioning of the human visual system and the decision making process. </b></p> <br>
-    
+
+        <p>By participating in this study, you will be part of the scientific effort to understand the
+            functioning of the human visual system and the decision making process. </b></p> <br>
+
         <p> PLEASE READ THROUGH OUR CONSENT INFORMATION SHEET BEFORE CONSENTING TO PARTICIPATING IN OUR STUDY. <br>
-            <a href="https://search.bwh.harvard.edu/OnlineExperiment/Consent_InformationSheet_Online_Nov2021.pdf" target="_blank"> >> CONSENT INFORMATION SHEET  </a>
+            <a href="https://search.bwh.harvard.edu/OnlineExperiment/Consent_InformationSheet_Online_Nov2021.pdf"
+                target="_blank"> >> CONSENT INFORMATION SHEET </a>
         </p>
-        
-        <label><input type = "radio" class = "checkbox"> BY CHECKING THIS BOX, YOU ACKNOWLEDGE THAT YOU READ THE INSTRUCTIONS AND THE CONSENT INFORMATION SHEET, UNDERSTAND THE 
+
+        <label><input type="radio" class="checkbox"> BY CHECKING THIS BOX, YOU ACKNOWLEDGE THAT YOU READ THE
+            INSTRUCTIONS AND THE CONSENT INFORMATION SHEET, UNDERSTAND THE
             TASK AND YOU CONSENT TO PARTICIPATE IN THIS STUDY.<br>
             <br>
-            </label> 
+        </label>
         <br><br>
-    
-        <div id = "Start_Experiment" >
-        <a href = "javascript:consented()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
-       <!--<a href = "javascript:startTesting()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
+
+        <div id="Start_Experiment">
+            <a href="javascript:consented()" id='consentHIT' class='PressButton'> Click Here to Start the Experiment</a>
+        </div>
+        <!--<a href = "javascript:startTesting()" id= 'consentHIT' class = 'PressButton'> Click Here to Start the Experiment</a> </div>
 -->
 
         <br><br> <br><br>
@@ -290,28 +298,16 @@
                 <div id="ResponseButton_instr"></div>
             </div>
             <div class="StimWindow" id="StimWindow">
-                <div class="Instruction">
-                    <p> 
-                        <!-- <br><br> -->
-                        <p style = "color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you saw 
-                        and the <b>time</b> when you saw them <br></p>
-                        <br>
-                        Items will appear on the screen for 3 seconds each at different locations. Please indicate if the
-                        object is a natural (by pressing the left arrow) or artificial/manmade (by pressing the right arrow)
-                        object. Some items will show up twice. <br><br>
-                        <b>Then, for testing, if you saw the item before,</b> click the location on the screen where you thought you saw it
-                        (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
-                        terms of start to end order).
+                <div class="Instruction" style="font-size: 1.5rem">
+                    <p>
                         <br><br>
-                        <b>If you saw the item before,</b> respond on the time bar when in the training portion you saw it (in terms of start to end order).
-                        <br><br>
-                        <b>If you have not seen it before,</b> click in the purple box to the right. 
-                        <br><br>
-                        You will receive feedback on whether you are right or wrong about the old/new decision. <br>
-                        You will NOT receive feedback on your temporal decision.
-                        <br><br><br>
-    
-                        <i>If the image size is too small, please enter the browser into full screen, and refresh the webpage to restart. </i>
+                    <p style="color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you saw and the <b>time</b> when you saw them <br></p>
+                    <br>
+                    Items will appear on the screen for 3 seconds each at different locations. Please indicate if the
+                    object is natural (by pressing the left arrow) or artificial/manmade (by pressing the right arrow).
+                    <br><br><br>
+
+                    <i>If the image size is too small, please enter the browser into full screen, and refresh the webpage to restart. </i>
                     </p>
 
                     <div class='StartButton'>
@@ -395,14 +391,18 @@
                 </div>
 
                 <div class="viewingEnd" id="viewingEnd">
-                    <p> 
+                    <p>
                         <br><br><br>
                         You have viewed all the images. <br><br>
-    
-                        Now we will show you one image at a time. If you have seen the image before, please estimate when that item appeared during the viewing block and respond using the time bar. <br><br>
-    
+
+                        Now we will show you one image at a time. If you have seen the image before, click on the
+                        location where you have seen it. <br><br>
+
+                        Additionally, please estimate when that item appeared during the viewing block and respond using
+                        the time bar. <br><br>
+
                         If you have not seen the image before, click on the purple button on the right.
-                       
+
                         <br><br>
                     </p>
 
@@ -512,7 +512,7 @@
     var IncludeBackGroundBoxes = 1; // 1 = box visible, 0 = box unvisible 
     var imageSizeParam = 0.9;// default = 0.9;
     var practiceOn = 0; // 1= include practice, 0 = go straight into experiment. 
-    var viewingBlock_instr = "Try to remember the identity and location of each item"
+    var viewingBlock_instr = "Try to remember the identity and order of appearance of each item" // temporal
 
     // STIMULUS VARIABLES 
     var ImgList_all = [];
@@ -767,7 +767,7 @@
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
-        } else if (id < 101 && resp || id >=101 && !resp) {
+        } else if (id < 101 && resp || id >= 101 && !resp) {
             // console.log('false');
             imageTypeQuiz[1] += 1; // add one wrong point
             // the goal is to have imageTypeQuiz = the number of images shown (50)
@@ -827,7 +827,7 @@
                     return true;
                 }
             }
-            function respArtificial () {
+            function respArtificial() {
                 document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
                 document.getElementById('right-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respArtificial); 
@@ -885,6 +885,7 @@
         $("#DisplayWindow_instr").show();
         $("#responseButton").show();
         $("#StimCanvas").show();
+        document.getElementById("headboard").innerHTML = " ";// ccc
         $("#headboard").show();
         $('#myProgress').show();
         document.getElementById("ResponseButton_instr").innerHTML = "Click here if this is a new item";

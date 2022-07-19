@@ -198,6 +198,7 @@
     #viewingEnd {
         display: none
     }
+
     .consent-list {
         line-height: 1.7rem;
     }
@@ -231,20 +232,21 @@
         <ul class="consent-list">
             <li>You start with training:</li>
             <ol>
-                <li>You will see one object image on the screen at a time, each will be appear for 3 seconds. Please also indicate if the image is naturalor artificial/manmade as the image appears.</li>
-                <li>Your job is to REMEMBER what objects you saw as well as WHEN and WHERE you saw them. </li>
-                <li>If you saw the item before, click the location where you thought you saw
-                    them (guess if you need to). Then, indicate on a time bar the time when you saw them. </li>
+                <li>You will see one object image on the screen at a time, each will be appear for 3 seconds. Please
+                    also indicate if the image is natural or artificial/manmade as the image appears.</li>
+                <li>Your job is to REMEMBER what objects you saw. </li>
             </ol>
             <li>Then, you will be tested:</li>
             <ol>
-                <li>You will be testing on the information you memorized in training. Images may be new or old.</li>
-                <li>Please respond as quickly and accurately as possible. We will record your responses and reaction time.</li>
+                <li>You will be tested on the information you memorized in training. Images may be new or old.</li>
+                <li>Please respond as quickly and accurately as possible. We will record your responses and reaction
+                    time.</li>
             </ol>
         </ul>
 
-        <p>The experiment consists of around ~100 trials. You should be able to complete the experimence in ~45 minutes.
-            You will receive $8 per hour for your participation. <b>You will be compensated only if you complete all the trials
+        <p>The experiment consists of around ~100 trials. You should be able to complete the experiment in ~45 minutes.
+            You will receive $8 per hour for your participation. <b>You will be compensated only if you complete all the
+                trials
                 and correctly identify whether an item is old/new at least 60% of the time.</b> </p>
 
         <p>By participating in this study, you will be part of the scientific effort to understand the
@@ -296,21 +298,14 @@
                 <div id="ResponseButton_instr"></div>
             </div>
             <div class="StimWindow" id="StimWindow">
-                <div class="Instruction">
+                <div class="Instruction" style="font-size: 1.5rem">
                     <p>
-                        <!-- <br><br> -->
+                        <br><br>
                     <p style="color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you
                         saw.<br></p>
                     <br>
                     Items will appear on the screen for 3 seconds each at different locations. Please indicate if the
-                    object is a natural (by pressing the left arrow) or artificial/manmade (by pressing the right arrow)
-                    object. Some items will show up twice. <br><br>
-                    <b>Then, for testing, if you saw the item before,</b> indicate on the canvas (there will be more instructions).
-                    <br><br>
-                    <b>If you have not seen it before,</b> click in the purple box to the right.
-                    <br><br>
-                    You will receive feedback on whether you are right or wrong about the old/new decision. <br>
-                    <!-- You will NOT receive feedback on your spatial and temporal decision. -->
+                    object is natural (by pressing the left arrow) or artificial/manmade (by pressing the right arrow).
                     <br><br><br>
 
                     <i>If the image size is too small, please enter the browser into full screen, and refresh the
@@ -373,7 +368,6 @@
                     <div class='StartButton'>
                         <!-- <a href="https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/SMMTMM_Round2.html" class="nextButton" id="nextTrialButton" -->
                         <a href="javascript:ExpEnd()" class="nextButton" id="nextTrialButton"
-                        
                             style="text-decoration: none;">Continue </a>
 
                     </div>
@@ -520,7 +514,7 @@
     var IncludeBackGroundBoxes = 1; // 1 = box visible, 0 = box unvisible 
     var imageSizeParam = 0.9;// default = 0.9;
     var practiceOn = 0; // 1= include practice, 0 = go straight into experiment. 
-    var viewingBlock_instr = "Try to remember the identity and location of each item"
+    var viewingBlock_instr = "Try to remember the identity of each item" // identity
 
     // STIMULUS VARIABLES 
     var ImgList_all = [];
@@ -835,7 +829,7 @@
                     return true;
                 }
             }
-            function respArtificial () {
+            function respArtificial() {
                 document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
                 document.getElementById('right-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respArtificial); 
@@ -866,7 +860,7 @@
                 // $(document).unbind('keyup');
             }
 
-            $(document).bind('keyup', e => {if (e.keyCode == 37) {respNatural(); $(document).unbind('keyup');} else if (e.keyCode == 39) {respArtificial(); $(document).unbind('keyup');} else console.log("wrong key"); }); //QQQ
+            $(document).bind('keyup', e => { if (e.keyCode == 37) { respNatural(); $(document).unbind('keyup'); } else if (e.keyCode == 39) { respArtificial(); $(document).unbind('keyup'); } else console.log("wrong key"); }); //QQQ
             // $(document).bind('keyup', 'l', respArtificial); //QQQ
         } else {
             // if all targets have been shown, present testingBlock instruction 
@@ -893,6 +887,7 @@
         $("#DisplayWindow_instr").show();
         $("#responseButton").show();
         $("#StimCanvas").show();
+        document.getElementById("headboard").innerHTML = " ";// ccc
         $("#headboard").show();
         $('#myProgress').show();
         document.getElementById("ResponseButton_instr").innerHTML = "Click here if this is a new item";

@@ -334,22 +334,14 @@
                 <div id="ResponseButton_instr"></div>
             </div>
             <div class="StimWindow" id="StimWindow">
-                <div class="Instruction">
-                    <!-- <p> -->
+                <div class="Instruction" style="font-size: 1.5rem">
+                    <br><br>
                     <p style="color:red"> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you
                         saw and the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p>
                     <br>
                     Like before, items will appear on the screen for 3 seconds each at different locations. Please indicate if the
                     object is a natural (by pressing the left arrow) or artificial/manmade (by pressing the right arrow)
-                    object. Some items will show up twice. <br>
-                    <b>Then, for testing, if you saw the item before,</b> click the location on the screen where you thought you saw it
-                    (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
-                    terms of start to end order).
-                    <br><br>
-                    <b>If you have not seen it before,</b> click in the purple box to the right.
-                    <br><br>
-                    You will receive feedback on whether you are right or wrong about the old/new decision. <br>
-                    You will still NOT receive feedback on your spatial and temporal decision.
+                    object. 
                     <br><br><br>
                     </p>
 
@@ -554,7 +546,7 @@
     var IncludeBackGroundBoxes = 1; // 1 = box visible, 0 = box unvisible 
     var imageSizeParam = 0.9;// default = 0.9;
     var practiceOn = 0; // 1= include practice, 0 = go straight into experiment. 
-    var viewingBlock_instr = "Try to remember the identity and location of each item"
+    var viewingBlock_instr = "Try to remember the identity, location, and order of appearance of each item" // full 
 
     // STIMULUS VARIABLES 
     var ImgList_all = [];
@@ -799,19 +791,19 @@
     function ImageType(resp, id) {
         // console.log("Response: " + (id >= 101 && resp || id < 101 && !resp) ? true : false);
         if (id >= 101 && resp) {
-            console.log("true");
+            // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
         } else if (id < 101 && !resp) {
-            console.log("true");
+            // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
         } else if (id < 101 && resp || id >= 101 && !resp) {
-            console.log('false');
+            // console.log('false');
             imageTypeQuiz[1] += 1; // add one wrong point
             // the goal is to have imageTypeQuiz = the number of images shown (50)
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
@@ -928,6 +920,7 @@
         $("#DisplayWindow_instr").show();
         $("#responseButton").show();
         $("#StimCanvas").show();
+        document.getElementById("headboard").innerHTML = " ";// ccc
         $("#headboard").show();
         $('#myProgress').show();
         document.getElementById("ResponseButton_instr").innerHTML = "Click here if this is a new item";
