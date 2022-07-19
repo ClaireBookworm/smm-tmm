@@ -198,6 +198,9 @@
     #viewingEnd {
         display: none
     }
+    .consent-list {
+        line-height: 1.7rem;
+    }
 </style>
 
 <!------------------------------------------------------------------------------------------------>
@@ -209,8 +212,8 @@
         <br><br>
         <h3>READ INSTRUCTIONS CAREFULLY BEFORE ACCEPTING TO PARTICIPATE:</h3>
     
-        <p>This study is part of a research project titled "How large is your visual memory capacity?". The principal investigator 
-        in charge of this study is Jeremy Wolfe (jwolfe@bwh.harvard.edu), Visual Attention Lab, Brigham and Women's Hospital. However, other research staff may be involved and can act on behalf of 
+        <p>This study is part of a research project titled "Spatial and Temporal Massive Memory". The principal investigator 
+        in charge of this study is Jeremy Wolfe (jwolfe@bwh.harvard.edu), Claire Wang, Visual Attention Lab, Brigham and Women's Hospital. However, other research staff may be involved and can act on behalf of 
         the person in charge.</p>
     
         <h4>Requirements:</h4>
@@ -222,13 +225,24 @@
         <h4>Instructions:</h4>
         <p><b>NOTE: </b>The experiment works in Safari and Chrome. If the experiment does not show in your browser, please notify the experimenter.</p> 
         When you start a trial:
-        <p>(1) You will see one object image on the screen at a time, each will be appear for 3 seconds.  </p> 
-        <p>(2) Your job is to REMEMBER what objects you saw as well as when you saw them.  </p> 
-        <p>(3) Some items will appear twice. If you saw the item before, indicate on a time bar the time when you saw them during the testing portion.  </p>
-        <p>(4) Please respond as quickly and accurately as possible. We will record your responses and reaction time. </p> 
+        <ul class="consent-list">
+            <li>You start with training:</li>
+            <ol>
+                <li>You will see one object image on the screen at a time, each will be appear for 3 seconds. Please also indicate if the image is naturalor artificial/manmade as the image appears.</li>
+                <li>Your job is to REMEMBER what objects you saw as well as WHEN and WHERE you saw them. </li>
+                <li>If you saw the item before, click the location where you thought you saw
+                    them (guess if you need to). Then, indicate on a time bar the time when you saw them. </li>
+            </ol>
+            <li>Then, you will be tested:</li>
+            <ol>
+                <li>You will be testing on the information you memorized in training. Images may be new or old.</li>
+                <li>Please respond as quickly and accurately as possible. We will record your responses and reaction time.</li>
+            </ol>
+        </ul>
     
-        <p>The experiment consists of around ~350 trials. You should be able to complete them in 30 minutes. You are alloted 60 min in total. 
-            You will receive $6 for your participation. <b>You will be compensated only if you complete all the trials and correctly identify whether an item is old/new at least 70% of the time.</b> </p>
+        <p>The experiment consists of around ~100 trials. You should be able to complete the experimence in ~45 minutes.
+            You will receive $8 per hour for your participation. <b>You will be compensated only if you complete all the trials
+                and correctly identify whether an item is old/new at least 60% of the time.</b> </p>
     
         <p>By participating in this study, you will be part of the scientific effort to understand the 
         functioning of the human visual system and the decision making process. </b></p> <br>
@@ -282,7 +296,13 @@
                         <p style = "color:red"> In this experiment, <br><br>Your job is to REMEMBER what <b>objects</b> you saw 
                         and the <b>time</b> when you saw them <br></p>
                         <br>
-                        Items will appear on the screen for 3 seconds each at different locations. Some items will show up twice. <br>
+                        Items will appear on the screen for 3 seconds each at different locations. Please indicate if the
+                        object is a natural (by pressing the left arrow) or artificial/manmade (by pressing the right arrow)
+                        object. Some items will show up twice. <br><br>
+                        <b>Then, for testing, if you saw the item before,</b> click the location on the screen where you thought you saw it
+                        (Guess if you need to). Then, respond on the time bar when in the training portion you saw it (in
+                        terms of start to end order).
+                        <br><br>
                         <b>If you saw the item before,</b> respond on the time bar when in the training portion you saw it (in terms of start to end order).
                         <br><br>
                         <b>If you have not seen it before,</b> click in the purple box to the right. 
@@ -350,7 +370,6 @@
                     <div class='StartButton'>
                         <!-- <a href="https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/SMMTMM_Round2.html" class="nextButton" id="nextTrialButton" -->
                         <a href="javascript:ExpEnd()" class="nextButton" id="nextTrialButton"
-                        
                             style="text-decoration: none;">Continue </a>
 
                     </div>
@@ -485,7 +504,7 @@
     // an earlier version and no longer used in the current experiment
 
     // PARAMETERS 
-    var MemSetSize = 3 //150;//25;//15; 
+    var MemSetSize = 50 //150;//25;//15; 
     var PresentationTime = 3000//000//00//00;//2000; // Presentation time of each item, in millisec
     var holdtime = 100; //
     var trialtotal = 12;
@@ -737,19 +756,19 @@
     function ImageType(resp, id) {
         // console.log("Response: " + (id >= 101 && resp || id < 101 && !resp) ? true : false);
         if (id >= 101 && resp) {
-            console.log("true");
+            // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
         } else if (id < 101 && !resp) {
-            console.log("true");
+            // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
         } else if (id < 101 && resp || id >=101 && !resp) {
-            console.log('false');
+            // console.log('false');
             imageTypeQuiz[1] += 1; // add one wrong point
             // the goal is to have imageTypeQuiz = the number of images shown (50)
             document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
@@ -790,32 +809,34 @@
             // respbutton.addEventListener('click', (event) => {
 
             // })
-            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural or artificial (manmade)?</p><br /><button>Press Left Arrow for Natural</button><button>Press Right Arrow for Artificial </button>";
+            document.getElementById("ResponseButton_instr").innerHTML = "<p>Is this image natural (left arrow) or artificial (right arrow)?</p><br /><button id='left-arrow'>	&#8592;Natural</button><button id='right-arrow'>Artificial &#8594;</button>";
 
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
-            function respNatural () {
+            function respNatural() {
                 document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                document.getElementById('left-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respNatural); //QQQ
                 if (thisImageID >= 101) {
-                    console.log("correct, it is natural")
+                    // console.log("correct, it is natural")
                     correctResponse(1);
                     return true;
                 } else if (thisImageID < 101) {
-                    console.log("incorrect, it is artificial")
+                    // console.log("incorrect, it is artificial")
                     correctResponse(2)
                     return true;
                 }
             }
             function respArtificial () {
                 document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                document.getElementById('right-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respArtificial); 
                 if (thisImageID < 101) {
-                    console.log("correct, it is artificial")
+                    // console.log("correct, it is artificial")
                     correctResponse(1);
                     return true;
                 } else if (thisImageID >= 101) {
-                    console.log("incorrect, it is natural")
+                    // console.log("incorrect, it is natural")
                     correctResponse(2)
                     return true;
                 }
@@ -824,12 +845,12 @@
             function correctResponse(correct) {
                 if (correct == 1) {
                     imageTypeQuiz[0] += 1;
-                    console.log("correct");
+                    // console.log("correct");
                 } else if (correct == 2) {
                     imageTypeQuiz[1] += 1;
-                    console.log("incorrect")
+                    // console.log("incorrect")
                 } else {
-                    console.log("no response")
+                    // console.log("no response")
                 }
                 // $(document).unbind('keyup', e => {if (e.keyCode == 37) respNatural(); else if (e.keyCode == 39) respArtificial(); else console.log("no unbinding")}); //QQQ
                 // $(document).unbind('keyup', respArtificial);
@@ -837,7 +858,7 @@
                 // $(document).unbind('keyup');
             }
 
-            $(document).bind('keyup', e => {if (e.keyCode == 37) {respNatural(); $(document).unbind('keyup');} else if (e.keyCode == 39) {respArtificial(); $(document).unbind('keyup');} else console.log("wrong key"); }); //QQQ
+            $(document).bind('keyup', e => { if (e.keyCode == 37) { respNatural(); $(document).unbind('keyup'); } else if (e.keyCode == 39) { respArtificial(); $(document).unbind('keyup'); } else console.log("wrong key"); }); //QQQ
             // $(document).bind('keyup', 'l', respArtificial); //QQQ
         } else {
             // if all targets have been shown, present testingBlock instruction 
@@ -1365,7 +1386,7 @@
     function saveData_toServer(thisData) {
         $('#demographic').hide();
 
-        filename = (curID_save + 'P1_TMM.txt');//"2.txt"
+        filename = (curID_save + '_T1_TMM.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
         console.log(filename, filedata, "saveData_toServer");
         $.ajax({ //this requires jQuery
@@ -1384,7 +1405,7 @@
 
     function saveData_toServer2(thisData) {
 
-        filename = (curID_save + 'P1_TMM_backup.txt');//"2.txt"
+        filename = (curID_save + '_T1_TMM_backup.txt');//"2.txt"
         filedata = JSON.stringify(thisData); //"data, (this can be a csv string or JSON or whatever data representation"
         console.log(filename, filedata);
         $.ajax({ //this requires jQuery
