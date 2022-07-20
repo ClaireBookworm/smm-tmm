@@ -226,22 +226,15 @@
         <p> Please complete this study on a desktop or laptop. </p>
 
         <h4>Instructions:</h4>
-        <p><b>NOTE: </b>The experiment works in Safari and Chrome. If the experiment does not show in your browser,
-            please notify the experimenter.</p>
-        When you start a trial:
+        <p><b>NOTE: </b>The experiment works in Safari, Brave, and Chrome, not Firefox or other browsers. If the experiment does not show in your browser, please notify the experimenter.</p>
+        There are two phases to this experiment: Training and Testing
         <ul class="consent-list">
-            <li>You start with training:</li>
+            <li>In the training phase, we will show you pictures of objects on the screen one at a time for 3 seconds each. You should try to remember the following information (we will be testing you later)</li>
             <ol>
-                <li>You will see one object image on the screen at a time, each will be appear for 3 seconds. Please
-                    also indicate if the image is natural or artificial/manmade as the image appears.</li>
-                <li>Your job is to REMEMBER what objects you saw as well as WHEN you saw them. </li>
+                <li>WHAT objects you saw</li>
+                <li>WHEN in the sequence of images it was presented</li>
             </ol>
-            <li>Then, you will be tested:</li>
-            <ol>
-                <li>You will be tested to see what information you memorized in training. Images may be new or old.</li>
-                <li>Please respond as quickly and accurately as possible. We will record your responses and reaction
-                    time.</li>
-            </ol>
+            <li>In the testing phase, we will test your memory for the previously seen objects. We will provide you with more instructions immediately before the testing phase begins.</li>
         </ul>
 
         <p>The experiment consists of around ~100 trials. You should be able to complete the experiment in ~45 minutes.
@@ -364,7 +357,6 @@
                     </p>
 
                     <div class='StartButton'>
-                        <!-- <a href="https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/SMMTMM_Round2.html" class="nextButton" id="nextTrialButton" -->
                         <a href="javascript:ExpEnd()" class="nextButton" id="nextTrialButton"
                             style="text-decoration: none;">Continue </a>
 
@@ -592,9 +584,9 @@
 
     // PREPARE IMAGE LIST
     function CreateImageList() {
-        for (var ImgInd = 1; ImgInd <= (100); ImgInd++) {
+        for (var ImgInd = 1; ImgInd <= (50); ImgInd++) {
             // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
-            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-artificial.jpg");
+            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/round1-images/" + ImgInd + "-artificial.jpg");
             // console.log(ImgInd); testing for images
             var curItem = {
                 GetImg,
@@ -603,9 +595,9 @@
             };
             ImgList_all.push(curItem);
         }
-        for (var ImgInd = 101; ImgInd <= (200); ImgInd++) {
+        for (var ImgInd = 51; ImgInd <= (100); ImgInd++) {
             // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
-            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-natural.jpg");
+            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/round1-images/" + ImgInd + "-natural.jpg");
             // console.log(ImgInd);
             var curItem = {
                 GetImg,
@@ -755,23 +747,23 @@
 
     function ImageType(resp, id) {
         // console.log("Response: " + (id >= 101 && resp || id < 101 && !resp) ? true : false);
-        if (id >= 101 && resp) {
+        if (id >= 51 && resp) {
             // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
-        } else if (id < 101 && !resp) {
+        } else if (id < 51 && !resp) {
             // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
-        } else if (id < 101 && resp || id >= 101 && !resp) {
+        } else if (id < 51 && resp || id >= 51 && !resp) {
             // console.log('false');
             imageTypeQuiz[1] += 1; // add one wrong point
             // the goal is to have imageTypeQuiz = the number of images shown (50)
-            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { return; })
             return false;
         }
@@ -814,29 +806,33 @@
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
             function respNatural() {
-                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
                 document.getElementById('left-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respNatural); //QQQ
-                if (thisImageID >= 101) {
+                if (thisImageID >= 51) {
                     // console.log("correct, it is natural")
+                    playSound_pos()
                     correctResponse(1);
                     return true;
-                } else if (thisImageID < 101) {
+                } else if (thisImageID < 51) {
                     // console.log("incorrect, it is artificial")
+                    playSound_neg()
                     correctResponse(2)
                     return true;
                 }
             }
             function respArtificial() {
-                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
                 document.getElementById('right-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respArtificial); 
-                if (thisImageID < 101) {
+                if (thisImageID < 51) {
                     // console.log("correct, it is artificial")
+                    playSound_pos()
                     correctResponse(1);
                     return true;
-                } else if (thisImageID >= 101) {
+                } else if (thisImageID >= 51) {
                     // console.log("incorrect, it is natural")
+                    playSound_neg()
                     correctResponse(2)
                     return true;
                 }

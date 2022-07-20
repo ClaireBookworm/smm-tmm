@@ -329,12 +329,14 @@
     </div>
 
     <div class="TestScreen" id="TestScreen">
+
         <body>
             <div class="ResponseButton" id="ResponseButton">
                 <div id="ResponseButton_instr"></div>
             </div>
             <div class="StimWindow" id="StimWindow">
                 <div class="Instruction" style="font-size: 1.5rem">
+
                     <br><br>
                     <p style="color:red"> In this second round, <br><br>your job is to REMEMBER what <b>objects</b> you
                         saw, the <b>locations</b> where you saw them, and the <b>time</b> when you saw them, as you've been tested previously. <br></p>
@@ -625,9 +627,9 @@
 
     // PREPARE IMAGE LIST
     function CreateImageList() {
-        for (var ImgInd = 1; ImgInd <= (100); ImgInd++) {
+        for (var ImgInd = 1; ImgInd <= (50); ImgInd++) {
             // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
-            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-artificial.jpg");
+            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/round2-images/" + ImgInd + "-artificial.jpg");
             // console.log(ImgInd); testing for images
             var curItem = {
                 GetImg,
@@ -636,9 +638,9 @@
             };
             ImgList_all.push(curItem);
         }
-        for (var ImgInd = 101; ImgInd <= (200); ImgInd++) {
+        for (var ImgInd = 51; ImgInd <= (100); ImgInd++) {
             // var GetImg =  ("https://search.bwh.harvard.edu/OnlineExperiment/SpatialMassiveMemory/Images/Object" + ImgInd + ".jpg");
-            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/images/" + ImgInd + "-natural.jpg");
+            var GetImg = ("https://search.bwh.harvard.edu/OnlineExperiment/SMM_TMM/round2-images/" + ImgInd + "-natural.jpg");
             // console.log(ImgInd);
             var curItem = {
                 GetImg,
@@ -788,24 +790,23 @@
     }
 
     function ImageType(resp, id) {
-        // console.log("Response: " + (id >= 101 && resp || id < 101 && !resp) ? true : false);
-        if (id >= 101 && resp) {
+        if (id >= 51 && resp) {
             // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
-        } else if (id < 101 && !resp) {
+        } else if (id < 51 && !resp) {
             // console.log("true");
             imageTypeQuiz[0] += 1; // add one correct point
-            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { exit() })
             return true;
-        } else if (id < 101 && resp || id >= 101 && !resp) {
+        } else if (id < 51 && resp || id >= 51 && !resp) {
             // console.log('false');
             imageTypeQuiz[1] += 1; // add one wrong point
             // the goal is to have imageTypeQuiz = the number of images shown (50)
-            document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+            // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
             // document.removeEventListener('keydown', function (event) { return; })
             return false;
         }
@@ -848,29 +849,33 @@
             document.getElementById("ResponseButton_instr").style = "padding: 10px"
             document.getElementById("ResponseButton").style = "background-color: #e0e6ed;"
             function respNatural () {
-                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
                 document.getElementById('left-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respNatural); //QQQ
-                if (thisImageID >= 101) {
+                if (thisImageID >= 51) {
                     // console.log("correct, it is natural")
+                    playSound_pos()
                     correctResponse(1);
                     return true;
-                } else if (thisImageID < 101) {
+                } else if (thisImageID < 51) {
                     // console.log("incorrect, it is artificial")
+                    playSound_neg()
                     correctResponse(2)
                     return true;
                 }
             }
             function respArtificial () {
-                document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
+                // document.getElementById('ResponseButton').style = "background-color: #6ed5fa";
                 document.getElementById('right-arrow').style = "background-color: #f9fafc";
                 // $(document).unbind('keyup', respArtificial); 
-                if (thisImageID < 101) {
+                if (thisImageID < 51) {
                     // console.log("correct, it is artificial")
+                    playSound_pos()
                     correctResponse(1);
                     return true;
-                } else if (thisImageID >= 101) {
+                } else if (thisImageID >= 51) {
                     // console.log("incorrect, it is natural")
+                    playSound_neg()
                     correctResponse(2)
                     return true;
                 }
