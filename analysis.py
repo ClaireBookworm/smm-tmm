@@ -3,9 +3,11 @@ import json
 import pandas
 import csv
 import os
+from functools import reduce	
 
 # f = open("jsons/1658438224287_S1_TMM_backup.json")
 
+euc = open("eucdist.txt")
 
 def clean_word(word):
 	word = word.strip()
@@ -15,6 +17,16 @@ def clean_word(word):
 	word = word.replace(",", "")
 	word = word.replace('\"', "")
 	return word
+
+# def analysis(dict):
+# 	# euc.write(dict["d_mTurkID"][0] + "\n")
+# 	dists = []
+# 	for dist in dict["Euclidian_distance"]:
+# 		if dist == -1:
+# 			continue
+# 		dists += [int(dist)]
+# 	return reduce(lambda a, b: a + b, dists) / len(dists)
+# 		# euc.write(dist + "\n")
 
 def generatecsv(file, type):
 	print (file)
@@ -93,7 +105,7 @@ def generatecsv(file, type):
 
 	mturk = data["d_mTurkID"]
 	print (mturk)
-
+	# analysis(data)
 	with open('results/' + mturk[0] + '_' + type + '.csv', 'w') as f:
 		writer = csv.writer(f)
 		# writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -124,3 +136,4 @@ for filename in os.listdir(directory):
 		type = f.split('_')[1]
 		print (f)
 		generatecsv(f, type)
+		
