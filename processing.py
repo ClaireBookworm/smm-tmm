@@ -1,14 +1,8 @@
-import json
-# from xml.etree.ElementTree import tostring
-import pandas
+# processsing . py 
+import os 
 import csv
-import os
-from functools import reduce	
 
-# f = open("jsons/1658438224287_S1_TMM_backup.json")
-
-euc = open("eucdist.txt")
-
+# helper functions 
 def clean_word(word):
 	word = word.strip()
 	word = word.replace(" ", "")
@@ -18,43 +12,32 @@ def clean_word(word):
 	word = word.replace('\"', "")
 	return word
 
-# def analysis(dict):
-# 	# euc.write(dict["d_mTurkID"][0] + "\n")
-# 	dists = []
-# 	for dist in dict["Euclidian_distance"]:
-# 		if dist == -1:
-# 			continue
-# 		dists += [int(dist)]
-# 	return reduce(lambda a, b: a + b, dists) / len(dists)
-# 		# euc.write(dist + "\n")
+def file_scanner(dir):
+	directory = dir
 
-def checkaccuracy (dict):
-	# check for image type quiz
-	testingCorrect = 0
-	for key in dict.keys():
-		if key == "imageTypeQuiz":
-			# print(','.join(dict[key]).replace("[","").replace("]","").split(',')[0])
-			print(','.join(dict[key]))
-			correct = ','.join(dict[key]).replace("[","").replace("]","").split(',')[0]
-			# incorrect = dict[key][1]
-			# noResponse = 50 - correct - incorrect
-			if int(correct) < 40:
-				return False # not greater than 80%
-		if key == "1=correct":
-			for value in dict[key]:
-				testingCorrect += int(value) # value = 1 if correct, 0 if incorrect
-			if testingCorrect < 60:
-				return False
-	# print ("Accuracy: " + str(testingCorrect / 60 * 100) + "%")
-	print ("Passed!")
-	return True
+	# iterate over files in
+	# that directory
+	for filename in os.listdir(directory):
+		f = os.path.join(directory, filename)
+		# checking if it is a file
+		if os.path.isfile(f):
+			type = f.split('_')[1]
+			# do things 
 
-def generatecsv(file, type):
-	# print (file)
+def generate_csv(dict, type):
+
+	with open('results/' + dict["d_mTurkID"][0] + '_' + type + '.csv', 'w') as f:
+		writer = csv.writer(f)
+		writer.writerows(dict.values())
+
+
+def generate_dict(file, type):
+		# print (file)
 	f = open(file)
 	
 	data = {
 		"round": [],
+		"type": [],
 		"blockName": [],
 		"Setsize": [],
 		"cueLength": [],
@@ -125,19 +108,4 @@ def generatecsv(file, type):
 	mturk = data["d_mTurkID"]
 	# print (mturk)
 	# analysis(data)
-	# with open('results/' + mturk[0] + '_' + type + '.csv', 'w') as f:
-	# 	writer = csv.writer(f)
-	# 	writer.writerows(data.values())
 
-directory = 'jsons'
-
-# iterate over files in
-# that directory
-for filename in os.listdir(directory):
-	f = os.path.join(directory, filename)
-	# checking if it is a file
-	if os.path.isfile(f):
-		type = f.split('_')[1]
-		# print (f)
-		generatecsv(f, type)
-		
