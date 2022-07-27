@@ -2,12 +2,37 @@
 import os
 
 
-def findmturk(file):
+def findmturk(file, et):
+	data = ""
 	with open(file) as f:
-		data = f.readlines()
-	# cont = data.reverse()
-	print (data)
-
+		try:
+			data = f.readlines()
+			# cont = data.reverse()
+		except:
+			print("error")
+	# print (data)
+	
+	unclean = ",".join(data).split(",")[-1]
+	exptype = ""
+	thing = ""
+	# print (unclean)
+	for elem in ",".join(data).split(",")[1:2]:
+		thing = (clean_word(elem).split(":")[1])
+		print (thing)
+	if thing == "Round2":
+		exptype = "F2"
+	elif thing == "Spatial":
+		exptype = "S1"
+	elif thing == "Temporal" or thing == "Test":
+		exptype = "T1"
+	elif thing == "FullInstruction" or thing == "Full Instruction":
+		exptype == "F1"
+	elif thing == "Identity":
+		exptype == "I1"
+	try: 
+		os.rename(file,unclean.split('"')[3] + "_" + et + ".txt")
+	except:
+		print("empty")
 
 def clean_word(word):
 	word = word.strip()
@@ -16,6 +41,10 @@ def clean_word(word):
 	word = word.replace("\n", "")
 	word = word.replace(",", "")
 	word = word.replace('\"', "")
+	word = word.replace('{', "")
+	word = word.replace('[', "")
+	word = word.replace('}', "")
+	word = word.replace(']', "")
 	return word
 
 def image_accuracy(file):
@@ -37,7 +66,7 @@ def image_accuracy(file):
 	# 	return False
 	return True
 
-directory = 'jsons'
+directory = 'temporal'
 
 # iterate over files in
 # that directory
@@ -45,5 +74,6 @@ for filename in os.listdir(directory):
 	f = os.path.join(directory, filename)
 	# checking if it is a file
 	if os.path.isfile(f):
+		exptype = f.split('_')[1]
 		# findmturk(f)
-		image_accuracy(f)
+		findmturk(f, exptype)

@@ -21,7 +21,7 @@ def file_scanner(dir):
 		f = os.path.join(directory, filename)
 		# checking if it is a file
 		if os.path.isfile(f):
-			type = f.split('_')[1]
+			exptype = f.split('_')[1]
 			# do things 
 
 def generate_csv(dict, type):
@@ -58,7 +58,8 @@ def generate_dict(file, type):
 		"clickLoc_row": [],
 		"clickLoc_column": [],
 		"Euclidian_distance": [],
-		"imageTypeQuiz": [],
+		"imageTypeCorrect":[],
+		"imageTypeWrong":[],
 		"TimeBarLoc_1st": [],
 		"TimeBarLoc_resp": [],
 		"TimeError_RespMinus1stAppear": [],
@@ -97,7 +98,7 @@ def generate_dict(file, type):
 			continue
 	print (quiz)
 	data["imageTypeQuiz"].append(quiz)
-	checkaccuracy(data)
+
 	# for key in data.keys():
 	# 	if key = ""
 
