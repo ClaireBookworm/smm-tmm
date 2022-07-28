@@ -1,9 +1,10 @@
+from binascii import a2b_hex
 import json
 # from xml.etree.ElementTree import tostring
 import pandas
 import csv
 import os
-from functools import reduce	
+from functools import reduce
 
 # f = open("jsons/1658438224287_S1_TMM_backup.json")
 
@@ -40,17 +41,17 @@ def checkaccuracy (data):
 		mturk = "NA"
 	if int(data["imageTypeCorrect"][0]) < 35:
 	# percentage = int(data["imageTypeCorrect"][0]) * 2
-		print(mturk + " type: " + exptype + " correct: " + data["imageTypeCorrect"][0] + "%")
+		# print(mturk + " type: " + exptype + " correct: " + data["imageTypeCorrect"][0] + "%")
 		return False
 	correct = 0
 	for num in data["1=correct"]:
 		correct += int(num)
 	# print (correct)
 	if correct < 60:
-		print(mturk + " type: " + exptype + " correct: " + str(correct) + "%")
+		# print(mturk + " type: " + exptype + " correct: " + str(correct) + "%")
 		return
 
-def generatecsv(file, exptype):
+def readfile(file, exptype):
 	# print (file)
 	f = open(file)
 	
@@ -109,11 +110,35 @@ def generatecsv(file, exptype):
 		except:
 			continue
 	checkaccuracy(data)
-	# print(str(file) + " mturk:" + mturk)
-		# return # failed to don't consider
-	# with open(mturk + '_' + exptype + '.csv', 'w') as f:
-	# 	writer = csv.writer(f)
-	# 	writer.writerows(data.values())
+
+	for num in range(0, 49):
+		data["d_mTurkID"].append(data["d_mTurkID"][0])
+	generatecsv(data)
+	return data
+
+
+
+def generatecsv(data):
+	if data["blockName"][0] == "Test":
+		data["blockName"][0] = "Temporal"
+	with open("csv2/" + data["blockName"][0] + '.csv', 'a') as f:
+		writer = csv.writer(f)
+		row = []
+		for num in range(0,50):
+			for value in data.values():
+			# print (value[num]) 
+				try:
+					row.append(value[num])
+				except:
+					continue
+				# for key in value:
+					# print (key)
+				# writer.writerow(value[num])
+			
+			writer.writerow(row)
+			row = []
+		# print (a)
+		# writer.writerow(a)
 
 directory = 'od-files'
 
@@ -125,5 +150,5 @@ for filename in os.listdir(directory):
 	if os.path.isfile(f):
 		exptype = f.split('_')[1].split('.')[0]
 		# print (f)
-		generatecsv(f, exptype)
+		readfile(f, exptype)
 		
