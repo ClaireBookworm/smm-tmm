@@ -52,7 +52,7 @@
 	"clickLoc_column": 1,
 	"Euclidian_distance": 602.5129650943597,
 	"imageTypeCorrect": 45,
-	"imageTypeWrong": 5"TimeBarLoc_1st": 6,
+	"imageTypeWrong": 5,"TimeBarLoc_1st": 6,
 	"TimeBarLoc_resp": 5.792984872494103,
 	"TimeError_RespMinus1stAppear": -0.20701512750589668,
 	"RT": 32617,

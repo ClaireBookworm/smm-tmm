@@ -1,7 +1,4 @@
-from binascii import a2b_hex
-import json
-# from xml.etree.ElementTree import tostring
-import pandas
+import math
 import csv
 import os
 from functools import reduce
@@ -34,22 +31,26 @@ def clean_word(word):
 # 		# euc.write(dist + "\n")
 
 def checkaccuracy (data):
+	exptype = data["blockName"][0]
+
 	try:
 		mturk = data["d_mTurkID"][0]
 	except:
 		print("none: " + f)
 		mturk = "NA"
-	if int(data["imageTypeCorrect"][0]) < 35:
-	# percentage = int(data["imageTypeCorrect"][0]) * 2
-		# print(mturk + " type: " + exptype + " correct: " + data["imageTypeCorrect"][0] + "%")
-		return False
+	quizCorrect = int(data["imageTypeCorrect"][0])
+	# if int(data["imageTypeCorrect"][0]) < 35:
+	# # percentage = int(data["imageTypeCorrect"][0]) * 2
+	# 	# print(mturk + " type: " + exptype + " correct: " + data["imageTypeCorrect"][0] + "%")
+	# 	return Falses
 	correct = 0
 	for num in data["1=correct"]:
 		correct += int(num)
 	# print (correct)
-	if correct < 60:
-		# print(mturk + " type: " + exptype + " correct: " + str(correct) + "%")
-		return
+	if correct < 60 or quizCorrect < 35:
+		print(mturk + " type: " + exptype + " correct: " + str(correct) + "%" + " quiz correct: " + str(quizCorrect*2) + "%")
+		return False
+	return True
 
 def readfile(file, exptype):
 	# print (file)
@@ -109,11 +110,13 @@ def readfile(file, exptype):
 			data[init].append(response)
 		except:
 			continue
-	checkaccuracy(data)
-
+	
 	for num in range(0, 49):
 		data["d_mTurkID"].append(data["d_mTurkID"][0])
-	generatecsv(data)
+	checkaccuracy(data)
+	# if checkaccuracy(data):
+		# spatial_analysis(data)
+		# generatecsv(data)
 	return data
 
 
@@ -131,24 +134,61 @@ def generatecsv(data):
 					row.append(value[num])
 				except:
 					continue
-				# for key in value:
-					# print (key)
-				# writer.writerow(value[num])
-			
 			writer.writerow(row)
 			row = []
-		# print (a)
-		# writer.writerow(a)
 
-directory = 'od-files'
 
-# iterate over files in
-# that directory
-for filename in os.listdir(directory):
-	f = os.path.join(directory, filename)
-	# checking if it is a file
-	if os.path.isfile(f):
-		exptype = f.split('_')[1].split('.')[0]
-		# print (f)
-		readfile(f, exptype)
-		
+def directory(path):
+	# directory = 'od-files'
+	directory = path
+
+	# iterate over files in
+	# that directory
+	for filename in os.listdir(directory):
+		f = os.path.join(directory, filename)
+		# checking if it is a file
+		if os.path.isfile(f):
+			exptype = f.split('_')[1].split('.')[0]
+			# print (f)
+			readfile(f, exptype)
+
+def spatial_analysis(data):
+	sums = 0
+	count = 0
+	floats = []
+	for dist in data['Euclidian_distance']:
+		if float(dist) == float(-1):
+			continue
+		floats.append(float(dist))
+		sums += float(dist)
+		count += 1
+	mean = float(sums/count)
+	variance = 0
+	for val in floats: 
+		variance += abs(float(val) - mean) * abs(float(val) - mean)
+	variance = variance / len(dist)
+	stdev = math.sqrt(variance)
+	print(stdev)
+
+	rois = [0,0,0] # three ROIs, one stdev, 2 stdev, three stdev
+	for val in floats:
+		if val <= stdev:
+			rois[0] += 1
+			continue
+		elif val <= stdev * 2:
+			rois[1] += 1
+			continue
+		elif val > stdev * 2:
+			rois[2] += 1
+
+	# if count == 0:
+	# 	print (data["d_mTurkID"][0] + "--" + data["blockName"][0] + "-> sum: " + str(float(sums)) + " count: " + str(count))
+	# else:	
+	# 	print (data["d_mTurkID"][0] + "--" + data["blockName"][0] + ": " + str(float(sums/count)))
+	with open("analysis/spatial.csv", 'a') as f:
+		writer = csv.writer(f)
+		# writer.writerow(["mturk id", "experiment", "Temperature 2"])
+		row = [data["d_mTurkID"][0], data["blockName"][0],float(sums),count,mean,stdev, rois[0], rois[1], rois[2]]
+		writer.writerow(row)
+
+directory('od-files')
