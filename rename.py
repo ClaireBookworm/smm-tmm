@@ -66,7 +66,7 @@ def image_accuracy(file):
 	# 	return False
 	return True
 
-directory = 'temporal'
+directory = 'rawnew'
 
 # iterate over files in
 # that directory

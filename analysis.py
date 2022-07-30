@@ -1,3 +1,4 @@
+from ctypes.wintypes import WORD
 import math
 import csv
 import os
@@ -29,6 +30,24 @@ def clean_word(word):
 # 		dists += [int(dist)]
 # 	return reduce(lambda a, b: a + b, dists) / len(dists)
 # 		# euc.write(dist + "\n")
+clickX = []
+clickY = []
+
+userlist = [
+	{
+
+	}
+]
+
+demographic = {
+	"d_mTurkID": [],
+	"d_age": [],
+	"d_gender": [],
+	"d_citizen": [],
+	"d_ethnicity": [],
+	"d_race": [],
+	"d_comments": [],
+}
 
 def checkaccuracy (data):
 	exptype = data["blockName"][0]
@@ -36,9 +55,13 @@ def checkaccuracy (data):
 	try:
 		mturk = data["d_mTurkID"][0]
 	except:
-		print("none: " + f)
+		# print("none: " + f)
 		mturk = "NA"
-	quizCorrect = int(data["imageTypeCorrect"][0])
+	try: 
+		quizCorrect = int(data["imageTypeCorrect"][0])
+	except:
+		print(data["d_mTurkID"][0] + str(data["imageTypeCorrect"]))
+		return False
 	# if int(data["imageTypeCorrect"][0]) < 35:
 	# # percentage = int(data["imageTypeCorrect"][0]) * 2
 	# 	# print(mturk + " type: " + exptype + " correct: " + data["imageTypeCorrect"][0] + "%")
@@ -96,38 +119,50 @@ def readfile(file, exptype):
 		"windowHeight": [],
 		"screenWidth": [],
 		"screenHeight": [],
-		"duration_ms": []
+		"duration_ms": [],
 	}
 
 	for line in f:
+		word = clean_word(line)
+		# try:
+		if len(word.split(":")) == 1:
+			continue
+		# types.append(word.split(":")[0])
+		init = word.split(":")[0]
+		response = word.split(":")[1]
+		if word[0] == "d" and word[1] == "_":
+			demographic[init].append(response)
 		try:
-			word = clean_word(line)
-			if len(word.split(":")) == 1:
-				continue
-			# types.append(word.split(":")[0])
-			init = word.split(":")[0]
-			response = word.split(":")[1]
 			data[init].append(response)
 		except:
+			# print ("error + "+  word)
 			continue
+		# except:
+		# 	print(word)
+		# 	continue
 	
-	for num in range(0, 49):
+	for num in range(0, 99):
 		data["d_mTurkID"].append(data["d_mTurkID"][0])
 	checkaccuracy(data)
 	# if checkaccuracy(data):
 		# spatial_analysis(data)
+		# for num in range(0, len(data["clickLoc_x"])):
+		# 	if float(data["clickLoc_x"][num]) != float(-1) and float(data["clickLoc_y"][num]) != float(-1):
+		# 		clickX.append(data["clickLoc_x"][num])
+		# 		clickY.append(data["clickLoc_y"][num])
 		# generatecsv(data)
 	return data
 
 
 
 def generatecsv(data):
-	if data["blockName"][0] == "Test":
-		data["blockName"][0] = "Temporal"
+	for num in range(0,len(data["blockName"])):
+		if data["blockName"][num] == "Test":
+			data["blockName"][num] = "Temporal"
 	with open("csv2/" + data["blockName"][0] + '.csv', 'a') as f:
 		writer = csv.writer(f)
 		row = []
-		for num in range(0,50):
+		for num in range(0,100):
 			for value in data.values():
 			# print (value[num]) 
 				try:
@@ -180,15 +215,28 @@ def spatial_analysis(data):
 			continue
 		elif val > stdev * 2:
 			rois[2] += 1
-
-	# if count == 0:
-	# 	print (data["d_mTurkID"][0] + "--" + data["blockName"][0] + "-> sum: " + str(float(sums)) + " count: " + str(count))
-	# else:	
-	# 	print (data["d_mTurkID"][0] + "--" + data["blockName"][0] + ": " + str(float(sums/count)))
-	with open("analysis/spatial.csv", 'a') as f:
+	with open("analysis/spatial3.csv", 'a') as f:
 		writer = csv.writer(f)
 		# writer.writerow(["mturk id", "experiment", "Temperature 2"])
 		row = [data["d_mTurkID"][0], data["blockName"][0],float(sums),count,mean,stdev, rois[0], rois[1], rois[2]]
 		writer.writerow(row)
 
-directory('od-files')
+directory('officialdata')
+# with open("clicks.csv", 'a') as f:
+# 	writer = csv.writer(f)
+# 	writer.writerow(clickX)
+# 	writer.writerow(clickY)
+
+
+with open("csv2/demographics.csv", 'a') as f:
+	writer = csv.writer(f)
+	row = []
+	for num in range(0,50):
+		for value in demographic.values():
+		# print (value[num]) 
+			try:
+				row.append(value[num])
+			except:
+				continue
+		writer.writerow(row)
+		row = []
