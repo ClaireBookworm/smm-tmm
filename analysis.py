@@ -143,9 +143,9 @@ def readfile(file, exptype):
 	
 	for num in range(0, 99):
 		data["d_mTurkID"].append(data["d_mTurkID"][0])
-	checkaccuracy(data)
-	# if checkaccuracy(data):
-		# spatial_analysis(data)
+	# checkaccuracy(data)
+	if checkaccuracy(data):
+		spatial_analysis(data, exptype)
 		# for num in range(0, len(data["clickLoc_x"])):
 		# 	if float(data["clickLoc_x"][num]) != float(-1) and float(data["clickLoc_y"][num]) != float(-1):
 		# 		clickX.append(data["clickLoc_x"][num])
@@ -187,38 +187,45 @@ def directory(path):
 			# print (f)
 			readfile(f, exptype)
 
-def spatial_analysis(data):
-	sums = 0
+def spatial_analysis(data, exptype):
+	d_sum = 0
+	t_sum = 0
 	count = 0
-	floats = []
-	for dist in data['Euclidian_distance']:
-		if float(dist) == float(-1):
+	d_floats = []
+	d_times = []
+	correct = 0
+	for (dist, time, resp) in zip(data['Euclidian_distance'], data['TimeError_RespMinus1stAppear'], data['1=correct']):
+		if float(dist) == float(-1) or float(time) == float(-1):
 			continue
-		floats.append(float(dist))
-		sums += float(dist)
+		d_times.append(float(time))
+		d_floats.append(float(dist))
+		d_sum += abs(float(dist))
+		t_sum += abs(float(time))
 		count += 1
-	mean = float(sums/count)
-	variance = 0
-	for val in floats: 
-		variance += abs(float(val) - mean) * abs(float(val) - mean)
-	variance = variance / len(dist)
-	stdev = math.sqrt(variance)
-	print(stdev)
+		correct += int(resp)
+	d_mean = float(d_sum/count)
+	t_mean = float(t_sum/count)
+	# variance = 0
+	# for val in floats: 
+	# 	variance += abs(float(val) - mean) * abs(float(val) - mean)
+	# variance = variance / len(dist)
+	# stdev = math.sqrt(variance)
+	# print(stdev)
 
-	rois = [0,0,0] # three ROIs, one stdev, 2 stdev, three stdev
-	for val in floats:
-		if val <= stdev:
-			rois[0] += 1
-			continue
-		elif val <= stdev * 2:
-			rois[1] += 1
-			continue
-		elif val > stdev * 2:
-			rois[2] += 1
-	with open("analysis/spatial3.csv", 'a') as f:
+	# rois = [0,0,0] # three ROIs, one stdev, 2 stdev, three stdev
+	# for val in floats:
+	# 	if val <= stdev:
+	# 		rois[0] += 1
+	# 		continue
+	# 	elif val <= stdev * 2:
+	# 		rois[1] += 1
+	# 		continue
+	# 	elif val > stdev * 2:
+	# 		rois[2] += 1
+	with open("analysis/analysis.csv", 'a') as f:
 		writer = csv.writer(f)
 		# writer.writerow(["mturk id", "experiment", "Temperature 2"])
-		row = [data["d_mTurkID"][0], data["blockName"][0],float(sums),count,mean,stdev, rois[0], rois[1], rois[2]]
+		row = [data["d_mTurkID"][0], d_mean, t_mean, exptype, correct]
 		writer.writerow(row)
 
 directory('officialdata')
